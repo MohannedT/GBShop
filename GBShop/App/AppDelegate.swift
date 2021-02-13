@@ -10,10 +10,49 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let requestFactory = RequestFactory()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let auth = requestFactory.makeAuthRequestFatory()
+        auth.login(userName: "Somebody", password: "mypassword") { (response) in
+            switch response.result {
+            case .success(let login):
+                print(login)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+
+        let register = requestFactory.makeRegistrationRequestFatory()
+        register.registration(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
+            switch response.result {
+            case .success(let register):
+                print(register)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let changeData = requestFactory.makeChangeUserDataRequestFactory()
+        changeData.changeUserData(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
+            switch response.result {
+            case .success(let change):
+                print(change)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let logout = requestFactory.makeLogoutRequestFactory()
+        logout.logout(idUser: 123) { (response) in
+            switch response.result {
+            case .success(let logout):
+            print(logout)
+            case .failure(let error):
+            print(error.localizedDescription)
+            }
+        }
+  
         return true
     }
 
