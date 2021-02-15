@@ -233,6 +233,42 @@
 			path = GBShopUITests;
 			sourceTree = "<group>";
 		};
+		4AB0351B25DAE64000BD2992 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4AC3267325D7E49F0023702A /* Auth.swift */,
+				4AC3266E25D7E4790023702A /* AuthRequestFactory.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4AB0351C25DAE64F00BD2992 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				4AC3268725D7F62B0023702A /* Registration.swift */,
+				4AC3268C25D7F6520023702A /* RegistrationRequestFactory.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		4AB0351D25DAE69600BD2992 /* ChangeUserData */ = {
+			isa = PBXGroup;
+			children = (
+				4AC3269D25D8085B0023702A /* ChangeUserData.swift */,
+				4AC326A525D8087E0023702A /* ChangeUserDataRequestFactory.swift */,
+			);
+			path = ChangeUserData;
+			sourceTree = "<group>";
+		};
+		4AB0351E25DAE6B200BD2992 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				4AC326DC25D8205F0023702A /* Logout.swift */,
+				4AC326D725D820430023702A /* LogoutRequestFactory.swift */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
 		4AC3264A25D7DF4D0023702A /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,14 +284,10 @@
 		4AC3266D25D7E43A0023702A /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				4AC3266E25D7E4790023702A /* AuthRequestFactory.swift */,
-				4AC3268C25D7F6520023702A /* RegistrationRequestFactory.swift */,
-				4AC326A525D8087E0023702A /* ChangeUserDataRequestFactory.swift */,
-				4AC326D725D820430023702A /* LogoutRequestFactory.swift */,
-				4AC326DC25D8205F0023702A /* Logout.swift */,
-				4AC3267325D7E49F0023702A /* Auth.swift */,
-				4AC3268725D7F62B0023702A /* Registration.swift */,
-				4AC3269D25D8085B0023702A /* ChangeUserData.swift */,
+				4AB0351E25DAE6B200BD2992 /* Logout */,
+				4AB0351D25DAE69600BD2992 /* ChangeUserData */,
+				4AB0351C25DAE64F00BD2992 /* Registration */,
+				4AB0351B25DAE64000BD2992 /* Auth */,
 				4AC3267825D7E5110023702A /* RequestFactory.swift */,
 			);
 			path = Network;
