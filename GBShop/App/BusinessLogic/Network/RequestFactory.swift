@@ -10,6 +10,9 @@ import Alamofire
 
 class RequestFactory {
     
+    
+    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    
     func makeErrorParser() -> AbstractErrorParser {
         return ErrorParser()
     }
@@ -26,22 +29,27 @@ class RequestFactory {
     
     func makeAuthRequestFatory() -> AuthRequestFactory {
         let errorParser = makeErrorParser()
-        return Auth(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return Auth(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
     }
     
     func makeRegistrationRequestFatory() -> RegistrationRequestFactory {
         let errorParser = makeErrorParser()
-        return Registration(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return Registration(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
         
     }
     
     func makeChangeUserDataRequestFactory() -> ChangeUserDataRequestFactory {
         let errorParser = makeErrorParser()
-        return ChangeUserData(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return ChangeUserData(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
     }
     func makeLogoutRequestFactory() -> LogoutRequestFactory {
             let errorParser = makeErrorParser()
-            return Logout(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return Logout(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+        
+    }
+    func makeCatalogRequestFactory() -> CatalogDataRequestFactory {
+            let errorParser = makeErrorParser()
+        return CatalogData(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
         
     }
 }
