@@ -20,7 +20,7 @@ class CatalogDataTests: XCTestCase {
         let session = Session(configuration: configuration)
         let catalog = CatalogData(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
         
-        let getCatalog = expectation(description: "getCatalog")
+        let getCatalog = expectation(description: "get catalog")
         
         catalog.getCatalog(pageNumber: 1, idCategory: 1) { (response) in
             switch response.result {
@@ -50,14 +50,12 @@ class CatalogDataTests: XCTestCase {
         let session = Session(configuration: configuration)
         let catalog = CatalogData(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
         
-        let failedloggedIn = expectation(description: "failed to log In")
+        let failedloggedIn = expectation(description: "failed to get catalog")
         
         catalog.getCatalog(pageNumber: 1, idCategory: 1) { (response) in
             switch response.result {
             case .success(let catalog):
                 XCTFail("must have failed: \(catalog)")
-                
-                
             case .failure:
                 failedloggedIn.fulfill()
             }

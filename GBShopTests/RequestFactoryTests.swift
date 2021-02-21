@@ -88,7 +88,7 @@ class RequestFactoryTests: XCTestCase {
     func testgetCatalog() throws {
         let requestFactory = RequestFactory()
         let catalog = requestFactory.makeCatalogRequestFactory()
-        let getCatalog = expectation(description: "get Catalog")
+        let getCatalog = expectation(description: "get catalog")
         
         
         catalog.getCatalog(pageNumber: 1, idCategory: 1) { (response) in
