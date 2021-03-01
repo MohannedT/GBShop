@@ -52,4 +52,9 @@ class RequestFactory {
         return CatalogData(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
         
     }
+    
+    func makeProductFromCatalogRequestFactory() -> ProductRequestFactory {
+        let errorParser = makeErrorParser()
+    return ProductFromCatalog(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+    }
 }

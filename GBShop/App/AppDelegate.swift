@@ -32,7 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                print(error.localizedDescription)
 //            }
 //        }
-//
+        let prod = requestFactory.makeProductFromCatalogRequestFactory()
+        prod.getProduct(idProduct: 123) { (response) in
+          
+            switch response.result {
+            case .success(let prod):
+                print(prod)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+
 //        let register = requestFactory.makeRegistrationRequestFatory()
 //        register.registration(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
 //            switch response.result {
