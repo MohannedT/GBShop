@@ -9,14 +9,13 @@ import Foundation
 import Alamofire
 
 class RequestFactory {
-    
-    
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
-    
+
+    let baseUrl = URL(string: "https://calm-basin-71582.herokuapp.com/")!
+
     func makeErrorParser() -> AbstractErrorParser {
         return ErrorParser()
     }
-    
+
     lazy var commonSession: Session = {
         let configuration = URLSessionConfiguration.default
         configuration.httpShouldSetCookies = false
@@ -24,20 +23,20 @@ class RequestFactory {
         let manager = Session(configuration: configuration)
         return manager
     }()
-    
+
     let sessionQueue = DispatchQueue.global(qos: .utility)
-    
+
     func makeAuthRequestFatory() -> AuthRequestFactory {
         let errorParser = makeErrorParser()
         return Auth(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
     }
-    
+
     func makeRegistrationRequestFatory() -> RegistrationRequestFactory {
         let errorParser = makeErrorParser()
         return Registration(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
-        
+
     }
-    
+
     func makeChangeUserDataRequestFactory() -> ChangeUserDataRequestFactory {
         let errorParser = makeErrorParser()
         return ChangeUserData(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
@@ -45,16 +44,30 @@ class RequestFactory {
     func makeLogoutRequestFactory() -> LogoutRequestFactory {
             let errorParser = makeErrorParser()
         return Logout(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
-        
+
     }
     func makeCatalogRequestFactory() -> CatalogDataRequestFactory {
             let errorParser = makeErrorParser()
         return CatalogData(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
-        
+
     }
-    
+
     func makeProductFromCatalogRequestFactory() -> ProductRequestFactory {
         let errorParser = makeErrorParser()
     return ProductFromCatalog(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+    }
+
+    func makeAddReviewRequestFactory() -> AddReviewRequestFactory {
+        let errorParser = makeErrorParser()
+    return AddReview(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+    }
+
+    func makeRemoveReviewRequestFactory() -> RemoveReviewRequestFactory {
+        let errorParser = makeErrorParser()
+    return RemoveReview(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+    }
+    func makeReviewListRequestFactory() -> ReviewListRequestFactory {
+        let errorParser = makeErrorParser()
+    return ReviewList(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
     }
 }

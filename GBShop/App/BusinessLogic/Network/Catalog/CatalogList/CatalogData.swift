@@ -13,7 +13,7 @@ class CatalogData: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue
     let baseUrl: URL
-    
+
     init(
         errorParser: AbstractErrorParser,
         sessionManager: Session,
@@ -30,16 +30,15 @@ extension CatalogData: CatalogDataRequestFactory {
     func getCatalog(pageNumber: Int, idCategory: Int, completionHandler: @escaping (AFDataResponse<CatalogResult>) -> Void) {
         let requestModel = Catalog(baseUrl: baseUrl, pageNumber: pageNumber, idCategory: idCategory)
         self.request(request: requestModel, completionHandler: completionHandler)
-    
- 
+
 }
 }
 extension CatalogData {
     struct Catalog: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "catalogData.json"
-        
+        let method: HTTPMethod = .post
+        let path: String = "catalogData"
+
         let pageNumber: Int
         let idCategory: Int
         var parameters: Parameters? {

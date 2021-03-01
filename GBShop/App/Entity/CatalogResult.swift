@@ -7,7 +7,6 @@
 
 import Foundation
 
-typealias CatalogResult = [Product]
-
-
-
+struct CatalogResult: Codable {
+    let products: [Product]
+}

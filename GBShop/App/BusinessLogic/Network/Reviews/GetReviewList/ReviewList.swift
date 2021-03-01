@@ -1,14 +1,14 @@
 //
-//  Auth.swift
+//  ReviewList.swift
 //  GBShop
 //
-//  Created by Александр Ипатов on 13.02.2021.
+//  Created by Александр Ипатов on 01.03.2021.
 //
 
 import Foundation
 import Alamofire
 
-class Auth: AbstractRequestFactory {
+class ReviewList: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
@@ -26,25 +26,24 @@ class Auth: AbstractRequestFactory {
     }
 }
 
-extension Auth: AuthRequestFactory {
-    func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+extension ReviewList: ReviewListRequestFactory {
+    func getReviewList(idProduct: Int, completionHandler: @escaping (AFDataResponse<ReviewListResult>) -> Void) {
+        let requestModel = RevList(baseUrl: baseUrl, idProduct: idProduct)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+
 }
 
-extension Auth {
-    struct Login: RequestRouter {
+extension ReviewList {
+    struct RevList: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "auth"
+        let path: String = "getReviewList"
 
-        let login: String
-        let password: String
+        let idProduct: Int
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "id_product": idProduct
             ]
         }
     }

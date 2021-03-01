@@ -9,11 +9,10 @@ import XCTest
 import Alamofire
 @testable import GBShop
 
-
 class ProductFromCatalogTests: XCTestCase {
-   
-    func testRegistration() throws {
-        let baseUrl = try XCTUnwrap (URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/"))
+
+    func testproductFromCatalog() throws {
+        let baseUrl = try XCTUnwrap(URL(string: "https://calm-basin-71582.herokuapp.com"))
         let configuration = URLSessionConfiguration.default
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
@@ -21,15 +20,14 @@ class ProductFromCatalogTests: XCTestCase {
         let prod = ProductFromCatalog(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
 
         let gotProd = expectation(description: "Got Prod")
-        
-        
+
         prod.getProduct(idProduct: 123) { (response) in
             switch response.result {
             case .success(let prod):
                 XCTAssertEqual(prod.result, 1)
                 XCTAssertEqual(prod.productName, "Ноутбук")
                 XCTAssertEqual(prod.productPrice, 45600)
-                XCTAssertEqual(prod.productDescription, "Мощный игровой ноутбук")
+                   XCTAssertEqual(prod.productDescription, "Мощный игровой ноутбук")
                 gotProd.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -37,19 +35,18 @@ class ProductFromCatalogTests: XCTestCase {
         }
         waitForExpectations(timeout: 10)
     }
-    
-    func testFailedRegistration() throws {
-        
-        let baseUrl = try XCTUnwrap (URL(string: "https://raw.githubusercontent.com"))
-        
+
+    func testFailedProductFromCatalog() throws {
+
+        let baseUrl = try XCTUnwrap(URL(string: "https://raw.githubusercontent.com"))
+
         let configuration = URLSessionConfiguration.default
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
         let prod = ProductFromCatalog(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
         let failedgetProf = expectation(description: "failed get prod")
-        
-        
+
         prod.getProduct(idProduct: 123) { (response) in
             switch response.result {
             case .success(let prod):
@@ -60,7 +57,5 @@ class ProductFromCatalogTests: XCTestCase {
         }
         waitForExpectations(timeout: 10)
     }
-        
-        
-        
+
 }

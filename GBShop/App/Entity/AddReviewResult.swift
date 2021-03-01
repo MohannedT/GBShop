@@ -1,13 +1,13 @@
 //
-//  RegistrationResult.swift
+//  AddReviewResult.swift
 //  GBShop
 //
-//  Created by Александр Ипатов on 13.02.2021.
+//  Created by Александр Ипатов on 01.03.2021.
 //
 
 import Foundation
 
-struct RegistrationResult: Codable {
+struct AddReviewResult: Codable {
     let userMessage: String
     let result: Int
 

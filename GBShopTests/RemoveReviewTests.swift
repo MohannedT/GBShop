@@ -1,32 +1,31 @@
 //
-//  LogoutTests.swift
+//  RemoveReviewTests.swift
 //  GBShopTests
 //
-//  Created by Александр Ипатов on 19.02.2021.
+//  Created by Александр Ипатов on 01.03.2021.
 //
 
 import XCTest
 import Alamofire
 @testable import GBShop
 
-class LogoutTests: XCTestCase {
+class RemoveReviewTests: XCTestCase {
 
-    func testLogOut() throws {
+    func testRemoveReview() throws {
         let baseUrl = try XCTUnwrap(URL(string: "https://calm-basin-71582.herokuapp.com"))
         let configuration = URLSessionConfiguration.default
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let logout = Logout(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let rev = RemoveReview(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
 
-        let loggedOut = expectation(description: "loggedOut")
+        let removedReviw = expectation(description: "Review remved")
 
-        logout.logout(idUser: 123) { (response) in
+        rev.removeReview(idComment: 123) { (response) in
             switch response.result {
-            case .success(let logout):
-                XCTAssertEqual(logout.result, 1)
-
-                loggedOut.fulfill()
+            case .success(let rev):
+                XCTAssertEqual(rev.result, 1)
+                removedReviw.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
@@ -34,7 +33,7 @@ class LogoutTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
 
-    func testFailedLogOut() throws {
+    func testFailedRemoveReview() throws {
 
         let baseUrl = try XCTUnwrap(URL(string: "https://raw.githubusercontent.com"))
 
@@ -42,19 +41,19 @@ class LogoutTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let logout = Logout(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let rev = RemoveReview(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
 
-        let failedlogout = expectation(description: "failed to log Out")
+        let failedRemoveReview = expectation(description: "failed remove reviw")
 
-        logout.logout(idUser: 123) { (response) in
+        rev.removeReview(idComment: 123) { (response) in
             switch response.result {
-            case .success(let logout):
-                XCTFail("must have failed: \(logout)")
-
+            case .success(let prod):
+                XCTFail("must have failed: \(prod)")
             case .failure:
-                failedlogout.fulfill()
+                failedRemoveReview.fulfill()
             }
         }
         waitForExpectations(timeout: 10)
     }
+
 }
