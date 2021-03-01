@@ -1,14 +1,14 @@
 //
-//  Auth.swift
+//  ProductFromCatalog.swift
 //  GBShop
 //
-//  Created by Александр Ипатов on 13.02.2021.
+//  Created by Александр Ипатов on 01.03.2021.
 //
 
 import Foundation
 import Alamofire
 
-class Auth: AbstractRequestFactory {
+class ProductFromCatalog: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
@@ -26,25 +26,25 @@ class Auth: AbstractRequestFactory {
     }
 }
 
-extension Auth: AuthRequestFactory {
-    func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+extension ProductFromCatalog: ProductRequestFactory {
+    func getProduct(idProduct: Int, completionHandler: @escaping (AFDataResponse<ProductWithDecription>) -> Void) {
+        let requestModel = ProductCatalog(baseUrl: baseUrl, idProduct: idProduct)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+    
+    
 }
 
-extension Auth {
-    struct Login: RequestRouter {
+extension ProductFromCatalog {
+    struct ProductCatalog: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "login.json"
+        let path: String = "getGoodById.json"
         
-        let login: String
-        let password: String
+        let idProduct: Int
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "id_Product": idProduct
             ]
         }
     }

@@ -12,15 +12,17 @@ class Registration: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl: URL
     
     init(
         errorParser: AbstractErrorParser,
         sessionManager: Session,
+        baseURL: URL,
         queue: DispatchQueue = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
+        self.baseUrl = baseURL
     }
 }
 
