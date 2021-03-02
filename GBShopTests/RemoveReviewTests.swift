@@ -17,7 +17,10 @@ class RemoveReviewTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let rev = RemoveReview(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let rev = RemoveReview(errorParser: ErrorParser(),
+                               sessionManager: session,
+                               baseURL: baseUrl,
+                               queue: DispatchQueue.global(qos: .utility))
 
         let removedReviw = expectation(description: "Review remved")
 
@@ -41,7 +44,10 @@ class RemoveReviewTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let rev = RemoveReview(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let rev = RemoveReview(errorParser: ErrorParser(),
+                               sessionManager: session,
+                               baseURL: baseUrl,
+                               queue: DispatchQueue.global(qos: .utility))
 
         let failedRemoveReview = expectation(description: "failed remove reviw")
 

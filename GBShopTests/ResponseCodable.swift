@@ -52,7 +52,7 @@ class ResponseCodableTests: XCTestCase {
                    switch response.result {
                    case .success: break
                    case .failure:
-                       XCTFail()
+                       XCTFail("failed")
                    }
                    self?.expectation.fulfill()
            }

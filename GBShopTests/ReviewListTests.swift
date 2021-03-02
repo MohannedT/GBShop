@@ -17,7 +17,10 @@ class ReviewListTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let rev = ReviewList(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let rev = ReviewList(errorParser: ErrorParser(),
+                             sessionManager: session,
+                             baseURL: baseUrl,
+                             queue: DispatchQueue.global(qos: .utility))
 
         let gotReviewList = expectation(description: "Got Review List")
 
@@ -44,7 +47,10 @@ class ReviewListTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let rev = ReviewList(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let rev = ReviewList(errorParser: ErrorParser(),
+                             sessionManager: session,
+                             baseURL: baseUrl,
+                             queue: DispatchQueue.global(qos: .utility))
 
         let failedGetReviewList = expectation(description: "failed get review list")
 

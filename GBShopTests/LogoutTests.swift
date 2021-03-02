@@ -17,7 +17,10 @@ class LogoutTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let logout = Logout(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let logout = Logout(errorParser: ErrorParser(),
+                            sessionManager: session,
+                            baseURL: baseUrl,
+                            queue: DispatchQueue.global(qos: .utility))
 
         let loggedOut = expectation(description: "loggedOut")
 
@@ -42,7 +45,10 @@ class LogoutTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let logout = Logout(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let logout = Logout(errorParser: ErrorParser(),
+                            sessionManager: session,
+                            baseURL: baseUrl,
+                            queue: DispatchQueue.global(qos: .utility))
 
         let failedlogout = expectation(description: "failed to log Out")
 

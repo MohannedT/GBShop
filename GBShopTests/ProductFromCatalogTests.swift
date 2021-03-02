@@ -17,7 +17,10 @@ class ProductFromCatalogTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let prod = ProductFromCatalog(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let prod = ProductFromCatalog(errorParser: ErrorParser(),
+                                      sessionManager: session,
+                                      baseURL: baseUrl,
+                                      queue: DispatchQueue.global(qos: .utility))
 
         let gotProd = expectation(description: "Got Prod")
 
@@ -44,7 +47,10 @@ class ProductFromCatalogTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let prod = ProductFromCatalog(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let prod = ProductFromCatalog(errorParser: ErrorParser(),
+                                      sessionManager: session,
+                                      baseURL: baseUrl,
+                                      queue: DispatchQueue.global(qos: .utility))
         let failedgetProf = expectation(description: "failed get prod")
 
         prod.getProduct(idProduct: 123) { (response) in

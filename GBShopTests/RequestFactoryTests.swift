@@ -19,7 +19,7 @@ class RequestFactoryTests: XCTestCase {
         auth.login(userName: "Somebody", password: "mypassword") { (response) in
             switch response.result {
             case .success(let login):
-                XCTAssertEqual(login.user.id, 123)
+                XCTAssertEqual(login.user.idUser, 123)
                 signedIn.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -34,7 +34,13 @@ class RequestFactoryTests: XCTestCase {
         let register = requestFactory.makeRegistrationRequestFatory()
 
         let signedIn = expectation(description: "logIn")
-        register.registration(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
+        register.registration(idUser: 123,
+                              userName: "Somebody",
+                              password: "mypassword",
+                              email: "some@some.ru",
+                              gender: "m",
+                              creditCard: "credit_card",
+                              bio: "This is good! I think I will switch to another language") { (response) in
             switch response.result {
             case .success(let register):
                 XCTAssertEqual(register.userMessage, "Регистрация прошла успешно!")
@@ -71,7 +77,13 @@ class RequestFactoryTests: XCTestCase {
         let changeData = requestFactory.makeChangeUserDataRequestFactory()
         let changeExp = expectation(description: "Change Data")
 
-        changeData.changeUserData(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
+        changeData.changeUserData(idUser: 123,
+                                  userName: "Somebody",
+                                  password: "mypassword",
+                                  email: "some@some.ru",
+                                  gender: "m",
+                                  creditCard: "credit_card",
+                                  bio: "This is good! I think I will switch to another language") { (response) in
             switch response.result {
             case .success(let change):
                 XCTAssertEqual(change.result, 1)

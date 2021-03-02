@@ -17,11 +17,19 @@ class RegistrationTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let reg = Registration(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let reg = Registration(errorParser: ErrorParser(),
+                               sessionManager: session,
+                               baseURL: baseUrl,
+                               queue: DispatchQueue.global(qos: .utility))
 
         let registered = expectation(description: "Registered")
 
-        reg.registration(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
+        reg.registration(idUser: 123, userName: "Somebody",
+                         password: "mypassword",
+                         email: "some@some.ru",
+                         gender: "m",
+                         creditCard: "credit_card",
+                         bio: "This is good! I think I will switch to another language") { (response) in
             switch response.result {
             case .success(let reg):
                 XCTAssertEqual(reg.result, 1)
@@ -43,11 +51,20 @@ class RegistrationTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let reg = Registration(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let reg = Registration(errorParser: ErrorParser(),
+                               sessionManager: session,
+                               baseURL: baseUrl,
+                               queue: DispatchQueue.global(qos: .utility))
 
         let failedRegistration = expectation(description: "failedRegistration")
 
-        reg.registration(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
+        reg.registration(idUser: 123,
+                         userName: "Somebody",
+                         password: "mypassword",
+                         email: "some@some.ru",
+                         gender: "m",
+                         creditCard: "credit_card",
+                         bio: "This is good! I think I will switch to another language") { (response) in
             switch response.result {
             case .success(let reg):
                 XCTFail("must have failed: \(reg)")

@@ -13,7 +13,6 @@ class Registration: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue
     let baseUrl: URL
-
     init(
         errorParser: AbstractErrorParser,
         sessionManager: Session,
@@ -27,19 +26,31 @@ class Registration: AbstractRequestFactory {
 }
 
 extension Registration: RegistrationRequestFactory {
-    func registration(idUser: Int, userName: String, password: String, email: String, gender: Character, creditCard: String, bio: String, completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void) {
-        let requestModel = Register(baseUrl: baseUrl, idUser: idUser, username: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+    func registration(idUser: Int,
+                      userName: String,
+                      password: String,
+                      email: String,
+                      gender: Character,
+                      creditCard: String,
+                      bio: String,
+                      completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void) {
+        let requestModel = Register(baseUrl: baseUrl,
+                                    idUser: idUser,
+                                    username: userName,
+                                    password: password,
+                                    email: email,
+                                    gender: gender,
+                                    creditCard: creditCard,
+                                    bio: bio)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
-
-    }
+}
 
 extension Registration {
     struct Register: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "register"
-
         let idUser: Int
         let username: String
         let password: String
@@ -56,7 +67,6 @@ extension Registration {
                 "gender": gender,
                 "credit_card": creditCard,
                 "bio": bio
-
             ]
         }
     }

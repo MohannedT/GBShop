@@ -27,7 +27,9 @@ class CatalogData: AbstractRequestFactory {
 }
 
 extension CatalogData: CatalogDataRequestFactory {
-    func getCatalog(pageNumber: Int, idCategory: Int, completionHandler: @escaping (AFDataResponse<CatalogResult>) -> Void) {
+    func getCatalog(pageNumber: Int,
+                    idCategory: Int,
+                    completionHandler: @escaping (AFDataResponse<CatalogResult>) -> Void) {
         let requestModel = Catalog(baseUrl: baseUrl, pageNumber: pageNumber, idCategory: idCategory)
         self.request(request: requestModel, completionHandler: completionHandler)
 

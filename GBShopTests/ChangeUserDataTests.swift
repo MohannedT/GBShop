@@ -17,10 +17,19 @@ class ChangeUserDataTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let changeData = ChangeUserData(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let changeData = ChangeUserData(errorParser: ErrorParser(),
+                                        sessionManager: session,
+                                        baseURL: baseUrl,
+                                        queue: DispatchQueue.global(qos: .utility))
         let changedData = expectation(description: "ChangedData")
 
-        changeData.changeUserData(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
+        changeData.changeUserData(idUser: 123,
+                                  userName: "Somebody",
+                                  password: "mypassword",
+                                  email: "some@some.ru",
+                                  gender: "m",
+                                  creditCard: "credit_card",
+                                  bio: "This is good! I think I will switch to another language") { (response) in
             switch response.result {
             case .success(let change):
                 XCTAssertEqual(change.result, 1)
@@ -40,10 +49,18 @@ class ChangeUserDataTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let changeData = ChangeUserData(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let changeData = ChangeUserData(errorParser: ErrorParser(),
+                                        sessionManager: session,
+                                        baseURL: baseUrl,
+                                        queue: DispatchQueue.global(qos: .utility))
         let failedChangeData = expectation(description: "ChangedData")
 
-        changeData.changeUserData(idUser: 123, userName: "Somebody", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "credit_card", bio: "This is good! I think I will switch to another language") { (response) in
+        changeData.changeUserData(idUser: 123, userName: "Somebody",
+                                  password: "mypassword",
+                                  email: "some@some.ru",
+                                  gender: "m",
+                                  creditCard: "credit_card",
+                                  bio: "This is good! I think I will switch to another language") { (response) in
             switch response.result {
             case .success(let change):
                 XCTFail("must have failed: \(change)")

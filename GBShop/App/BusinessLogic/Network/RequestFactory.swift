@@ -33,41 +33,65 @@ class RequestFactory {
 
     func makeRegistrationRequestFatory() -> RegistrationRequestFactory {
         let errorParser = makeErrorParser()
-        return Registration(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+        return Registration(errorParser: errorParser,
+                            sessionManager: commonSession,
+                            baseURL: baseUrl,
+                            queue: sessionQueue)
 
     }
 
     func makeChangeUserDataRequestFactory() -> ChangeUserDataRequestFactory {
         let errorParser = makeErrorParser()
-        return ChangeUserData(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+        return ChangeUserData(errorParser: errorParser,
+                              sessionManager: commonSession,
+                              baseURL: baseUrl,
+                              queue: sessionQueue)
     }
     func makeLogoutRequestFactory() -> LogoutRequestFactory {
             let errorParser = makeErrorParser()
-        return Logout(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+        return Logout(errorParser: errorParser,
+                      sessionManager: commonSession,
+                      baseURL: baseUrl,
+                      queue: sessionQueue)
 
     }
     func makeCatalogRequestFactory() -> CatalogDataRequestFactory {
             let errorParser = makeErrorParser()
-        return CatalogData(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+        return CatalogData(errorParser: errorParser,
+                           sessionManager: commonSession,
+                           baseURL: baseUrl,
+                           queue: sessionQueue)
 
     }
 
     func makeProductFromCatalogRequestFactory() -> ProductRequestFactory {
         let errorParser = makeErrorParser()
-    return ProductFromCatalog(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+    return ProductFromCatalog(errorParser: errorParser,
+                              sessionManager: commonSession,
+                              baseURL: baseUrl,
+                              queue: sessionQueue)
     }
 
     func makeAddReviewRequestFactory() -> AddReviewRequestFactory {
         let errorParser = makeErrorParser()
-    return AddReview(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+    return AddReview(errorParser: errorParser,
+                     sessionManager: commonSession,
+                     baseURL: baseUrl,
+                     queue: sessionQueue)
     }
 
     func makeRemoveReviewRequestFactory() -> RemoveReviewRequestFactory {
         let errorParser = makeErrorParser()
-    return RemoveReview(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+    return RemoveReview(errorParser: errorParser,
+                        sessionManager: commonSession,
+                        baseURL: baseUrl,
+                        queue: sessionQueue)
     }
     func makeReviewListRequestFactory() -> ReviewListRequestFactory {
         let errorParser = makeErrorParser()
-    return ReviewList(errorParser: errorParser, sessionManager: commonSession, baseURL: baseUrl, queue: sessionQueue)
+    return ReviewList(errorParser: errorParser,
+                      sessionManager: commonSession,
+                      baseURL: baseUrl,
+                      queue: sessionQueue)
     }
 }

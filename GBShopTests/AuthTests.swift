@@ -17,7 +17,10 @@ class AuthTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let auth = Auth(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let auth = Auth(errorParser: ErrorParser(),
+                        sessionManager: session,
+                        baseURL: baseUrl,
+                        queue: DispatchQueue.global(qos: .utility))
 
         let loggedIn = expectation(description: "loggedIn")
 
@@ -25,7 +28,7 @@ class AuthTests: XCTestCase {
             switch response.result {
             case .success(let login):
                 XCTAssertEqual(login.result, 1)
-                XCTAssertEqual(login.user.id, 123)
+                XCTAssertEqual(login.user.idUser, 123)
                 XCTAssertEqual(login.user.login, "geekbrains")
                 XCTAssertEqual(login.user.name, "John")
                 XCTAssertEqual(login.user.lastname, "Doe")
@@ -46,7 +49,10 @@ class AuthTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let auth = Auth(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let auth = Auth(errorParser: ErrorParser(),
+                        sessionManager: session,
+                        baseURL: baseUrl,
+                        queue: DispatchQueue.global(qos: .utility))
 
         let failedloggedIn = expectation(description: "failed to log In")
 

@@ -17,7 +17,10 @@ class AddReviewTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let rev = AddReview(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let rev = AddReview(errorParser: ErrorParser(),
+                            sessionManager: session,
+                            baseURL: baseUrl,
+                            queue: DispatchQueue.global(qos: .utility))
 
         let addedReviw = expectation(description: "Review added")
 
@@ -42,7 +45,10 @@ class AddReviewTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let rev = AddReview(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let rev = AddReview(errorParser: ErrorParser(),
+                            sessionManager: session,
+                            baseURL: baseUrl,
+                            queue: DispatchQueue.global(qos: .utility))
 
         let failedgaddReview = expectation(description: "failed add reviw")
 

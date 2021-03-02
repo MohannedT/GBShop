@@ -17,7 +17,10 @@ class CatalogDataTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let catalog = CatalogData(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let catalog = CatalogData(errorParser: ErrorParser(),
+                                  sessionManager: session,
+                                  baseURL: baseUrl,
+                                  queue: DispatchQueue.global(qos: .utility))
 
         let getCatalog = expectation(description: "get catalog")
 
@@ -47,7 +50,10 @@ class CatalogDataTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let catalog = CatalogData(errorParser: ErrorParser(), sessionManager: session, baseURL: baseUrl, queue: DispatchQueue.global(qos: .utility))
+        let catalog = CatalogData(errorParser: ErrorParser(),
+                                  sessionManager: session,
+                                  baseURL: baseUrl,
+                                  queue: DispatchQueue.global(qos: .utility))
 
         let failedloggedIn = expectation(description: "failed to get catalog")
 
