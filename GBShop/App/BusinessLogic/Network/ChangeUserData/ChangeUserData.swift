@@ -13,7 +13,7 @@ class ChangeUserData: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue
     let baseUrl: URL
-    
+
     init(
         errorParser: AbstractErrorParser,
         sessionManager: Session,
@@ -27,22 +27,33 @@ class ChangeUserData: AbstractRequestFactory {
 }
 
 extension ChangeUserData: ChangeUserDataRequestFactory {
-    func changeUserData(idUser: Int, userName: String, password: String, email: String, gender: Character, creditCard: String, bio: String, completionHandler: @escaping (AFDataResponse<ChangeUserDataResult>) -> Void) {
-        let requestModel = Change(baseUrl: baseUrl, idUser: idUser, username: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+    func changeUserData(idUser: Int,
+                        userName: String,
+                        password: String,
+                        email: String,
+                        gender: Character,
+                        creditCard: String,
+                        bio: String,
+                        completionHandler: @escaping (AFDataResponse<ChangeUserDataResult>) -> Void) {
+        let requestModel = Change(baseUrl: baseUrl,
+                                  idUser: idUser,
+                                  username: userName,
+                                  password: password,
+                                  email: email,
+                                  gender: gender,
+                                  creditCard: creditCard,
+                                  bio: bio)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
-   
 
     }
-
 
 extension ChangeUserData {
     struct Change: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "changeUserData.json"
-        
-        
+        let method: HTTPMethod = .post
+        let path: String = "changeData"
+
         let idUser: Int
         let username: String
         let password: String
@@ -52,13 +63,13 @@ extension ChangeUserData {
         let bio: String
         var parameters: Parameters? {
             return [
-                "id_user" : idUser,
-                "username" : username,
-                "password" : password,
-                "email" : email,
+                "id_user": idUser,
+                "username": username,
+                "password": password,
+                "email": email,
                 "gender": gender,
-                "credit_card" : creditCard,
-                "bio" : bio
+                "credit_card": creditCard,
+                "bio": bio
 
             ]
         }

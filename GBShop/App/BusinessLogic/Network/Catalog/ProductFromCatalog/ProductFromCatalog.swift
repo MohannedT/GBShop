@@ -13,7 +13,7 @@ class ProductFromCatalog: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue
     let baseUrl: URL
-    
+
     init(
         errorParser: AbstractErrorParser,
         sessionManager: Session,
@@ -31,20 +31,19 @@ extension ProductFromCatalog: ProductRequestFactory {
         let requestModel = ProductCatalog(baseUrl: baseUrl, idProduct: idProduct)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
-    
-    
+
 }
 
 extension ProductFromCatalog {
     struct ProductCatalog: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "getGoodById.json"
-        
+        let method: HTTPMethod = .post
+        let path: String = "getProduct"
+
         let idProduct: Int
         var parameters: Parameters? {
             return [
-                "id_Product": idProduct
+                "id_product": idProduct
             ]
         }
     }

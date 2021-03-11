@@ -1,35 +1,35 @@
 //
-//  LogoutTests.swift
+//  AddReviewTests.swift
 //  GBShopTests
 //
-//  Created by Александр Ипатов on 19.02.2021.
+//  Created by Александр Ипатов on 01.03.2021.
 //
 
 import XCTest
 import Alamofire
 @testable import GBShop
 
-class LogoutTests: XCTestCase {
+class AddReviewTests: XCTestCase {
 
-    func testLogOut() throws {
+    func testAddReview() throws {
         let baseUrl = try XCTUnwrap(URL(string: "https://calm-basin-71582.herokuapp.com"))
         let configuration = URLSessionConfiguration.default
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let logout = Logout(errorParser: ErrorParser(),
+        let rev = AddReview(errorParser: ErrorParser(),
                             sessionManager: session,
                             baseURL: baseUrl,
                             queue: DispatchQueue.global(qos: .utility))
 
-        let loggedOut = expectation(description: "loggedOut")
+        let addedReviw = expectation(description: "Review added")
 
-        logout.logout(idUser: 123) { (response) in
+        rev.addReview(idUser: 123, text: "Текст отзыва") { (response) in
             switch response.result {
-            case .success(let logout):
-                XCTAssertEqual(logout.result, 1)
-
-                loggedOut.fulfill()
+            case .success(let rev):
+                XCTAssertEqual(rev.result, 1)
+                XCTAssertEqual(rev.userMessage, "Ваш отзыв был передан на модерацию")
+                addedReviw.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
@@ -37,7 +37,7 @@ class LogoutTests: XCTestCase {
         waitForExpectations(timeout: 10)
     }
 
-    func testFailedLogOut() throws {
+    func testFailedAddReview() throws {
 
         let baseUrl = try XCTUnwrap(URL(string: "https://raw.githubusercontent.com"))
 
@@ -45,22 +45,22 @@ class LogoutTests: XCTestCase {
         configuration.httpShouldSetCookies = false
         configuration.headers = .default
         let session = Session(configuration: configuration)
-        let logout = Logout(errorParser: ErrorParser(),
+        let rev = AddReview(errorParser: ErrorParser(),
                             sessionManager: session,
                             baseURL: baseUrl,
                             queue: DispatchQueue.global(qos: .utility))
 
-        let failedlogout = expectation(description: "failed to log Out")
+        let failedgaddReview = expectation(description: "failed add reviw")
 
-        logout.logout(idUser: 123) { (response) in
+        rev.addReview(idUser: 123, text: "Текст отзыва") { (response) in
             switch response.result {
-            case .success(let logout):
-                XCTFail("must have failed: \(logout)")
-
+            case .success(let rev):
+                XCTFail("must have failed: \(rev)")
             case .failure:
-                failedlogout.fulfill()
+                failedgaddReview.fulfill()
             }
         }
         waitForExpectations(timeout: 10)
     }
+
 }

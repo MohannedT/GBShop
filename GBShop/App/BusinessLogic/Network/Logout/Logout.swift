@@ -13,7 +13,7 @@ class Logout: AbstractRequestFactory {
     let sessionManager: Session
     let queue: DispatchQueue
     let baseUrl: URL
-    
+
     init(
         errorParser: AbstractErrorParser,
         sessionManager: Session,
@@ -31,25 +31,20 @@ extension Logout: LogoutRequestFactory {
        let requestModel = LogoutUser(baseUrl: baseUrl, idUser: idUser)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
-    
-  
+
     }
-   
-
-
 
 extension Logout {
     struct LogoutUser: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "logout.json"
-        
-        
+        let method: HTTPMethod = .post
+        let path: String = "logout"
+
         let idUser: Int
         var parameters: Parameters? {
             return [
-                "id_user" : idUser,
-               
+                "id_user": idUser
+
             ]
         }
     }

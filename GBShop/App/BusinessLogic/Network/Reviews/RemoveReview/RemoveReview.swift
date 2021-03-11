@@ -1,14 +1,14 @@
 //
-//  Auth.swift
+//  RemoveReview.swift
 //  GBShop
 //
-//  Created by Александр Ипатов on 13.02.2021.
+//  Created by Александр Ипатов on 01.03.2021.
 //
 
 import Foundation
 import Alamofire
 
-class Auth: AbstractRequestFactory {
+class RemoveReview: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
@@ -26,25 +26,24 @@ class Auth: AbstractRequestFactory {
     }
 }
 
-extension Auth: AuthRequestFactory {
-    func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+extension RemoveReview: RemoveReviewRequestFactory {
+    func removeReview(idComment: Int, completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void) {
+        let requestModel = Remove(baseUrl: baseUrl, idComment: idComment)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+
 }
 
-extension Auth {
-    struct Login: RequestRouter {
+extension RemoveReview {
+    struct Remove: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "auth"
+        let path: String = "removeReview"
 
-        let login: String
-        let password: String
+        let idComment: Int
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "id_comment": idComment
             ]
         }
     }
