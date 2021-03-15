@@ -186,5 +186,52 @@ class RequestFactoryTests: XCTestCase {
         }
         waitForExpectations(timeout: 10)
     }
+    func testPayBasket() throws {
+        let requestFactory = RequestFactory()
+        let revList = requestFactory.makePayBasketRequestFactory()
+        let gotReviewList = expectation(description: "Got Review List")
 
+        revList.payBasket(idUser: 123, paymentAmount: 200) { (response) in
+            switch response.result {
+            case .success(let rev):
+                XCTAssertEqual(rev.result, 1)
+                gotReviewList.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        waitForExpectations(timeout: 10)
+    }
+    func testAddToBasket() throws {
+        let requestFactory = RequestFactory()
+        let revList = requestFactory.makeAddToBasketRequestFactory()
+        let gotReviewList = expectation(description: "Add To Basket")
+
+        revList.addToBasket(idProduct: 123, quantity: 1) { (response) in
+            switch response.result {
+            case .success(let rev):
+                XCTAssertEqual(rev.result, 1)
+                gotReviewList.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        waitForExpectations(timeout: 10)
+    }
+    func testDeleteFromBasket() throws {
+        let requestFactory = RequestFactory()
+        let revList = requestFactory.makeDeleteFromBasketRequestFactory()
+        let gotReviewList = expectation(description: "Got Review List")
+
+        revList.deleteFromBasket(idProduct: 123) { (response) in
+            switch response.result {
+            case .success(let rev):
+                XCTAssertEqual(rev.result, 1)
+                gotReviewList.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        waitForExpectations(timeout: 10)
+    }
 }

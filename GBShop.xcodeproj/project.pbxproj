@@ -31,6 +31,18 @@
 		4A2E56DD25ED01590055611A /* AddReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2E56DC25ED01590055611A /* AddReviewTests.swift */; };
 		4A2E56E225ED02E50055611A /* RemoveReviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2E56E125ED02E50055611A /* RemoveReviewTests.swift */; };
 		4A2E56E725ED041B0055611A /* ReviewListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2E56E625ED041B0055611A /* ReviewListTests.swift */; };
+		4A5BF26525FAC2E3002E6FA8 /* PayBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF25D25FAC2E2002E6FA8 /* PayBasket.swift */; };
+		4A5BF26625FAC2E3002E6FA8 /* PayBasketRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF25E25FAC2E2002E6FA8 /* PayBasketRequestFactory.swift */; };
+		4A5BF26725FAC2E3002E6FA8 /* AddToBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF26025FAC2E3002E6FA8 /* AddToBasket.swift */; };
+		4A5BF26825FAC2E3002E6FA8 /* AddToBasketRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF26125FAC2E3002E6FA8 /* AddToBasketRequestFactory.swift */; };
+		4A5BF26925FAC2E3002E6FA8 /* DeleteFromBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF26325FAC2E3002E6FA8 /* DeleteFromBasket.swift */; };
+		4A5BF26A25FAC2E3002E6FA8 /* DeleteFromBasketRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF26425FAC2E3002E6FA8 /* DeleteFromBasketRequestFactory.swift */; };
+		4A5BF26F25FAC309002E6FA8 /* PayBasketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF26E25FAC309002E6FA8 /* PayBasketResult.swift */; };
+		4A5BF27425FAC310002E6FA8 /* DeleteFromBasketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF27325FAC310002E6FA8 /* DeleteFromBasketResult.swift */; };
+		4A5BF27925FAC316002E6FA8 /* AddToBasketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF27825FAC316002E6FA8 /* AddToBasketResult.swift */; };
+		4A5BF27E25FAC350002E6FA8 /* PayBasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF27D25FAC350002E6FA8 /* PayBasketTests.swift */; };
+		4A5BF28625FAC354002E6FA8 /* DeleteFromBasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF28525FAC354002E6FA8 /* DeleteFromBasketTests.swift */; };
+		4A5BF28E25FAC358002E6FA8 /* AddToBasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5BF28D25FAC358002E6FA8 /* AddToBasketTests.swift */; };
 		4A84DA3025D299A400C57241 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A84DA2F25D299A400C57241 /* AppDelegate.swift */; };
 		4A84DA3225D299A400C57241 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A84DA3125D299A400C57241 /* SceneDelegate.swift */; };
 		4A84DA3925D299A400C57241 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A84DA3825D299A400C57241 /* Assets.xcassets */; };
@@ -105,6 +117,18 @@
 		4A2E56DC25ED01590055611A /* AddReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewTests.swift; sourceTree = "<group>"; };
 		4A2E56E125ED02E50055611A /* RemoveReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveReviewTests.swift; sourceTree = "<group>"; };
 		4A2E56E625ED041B0055611A /* ReviewListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListTests.swift; sourceTree = "<group>"; };
+		4A5BF25D25FAC2E2002E6FA8 /* PayBasket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayBasket.swift; sourceTree = "<group>"; };
+		4A5BF25E25FAC2E2002E6FA8 /* PayBasketRequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayBasketRequestFactory.swift; sourceTree = "<group>"; };
+		4A5BF26025FAC2E3002E6FA8 /* AddToBasket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToBasket.swift; sourceTree = "<group>"; };
+		4A5BF26125FAC2E3002E6FA8 /* AddToBasketRequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToBasketRequestFactory.swift; sourceTree = "<group>"; };
+		4A5BF26325FAC2E3002E6FA8 /* DeleteFromBasket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteFromBasket.swift; sourceTree = "<group>"; };
+		4A5BF26425FAC2E3002E6FA8 /* DeleteFromBasketRequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteFromBasketRequestFactory.swift; sourceTree = "<group>"; };
+		4A5BF26E25FAC309002E6FA8 /* PayBasketResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayBasketResult.swift; sourceTree = "<group>"; };
+		4A5BF27325FAC310002E6FA8 /* DeleteFromBasketResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteFromBasketResult.swift; sourceTree = "<group>"; };
+		4A5BF27825FAC316002E6FA8 /* AddToBasketResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToBasketResult.swift; sourceTree = "<group>"; };
+		4A5BF27D25FAC350002E6FA8 /* PayBasketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayBasketTests.swift; sourceTree = "<group>"; };
+		4A5BF28525FAC354002E6FA8 /* DeleteFromBasketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteFromBasketTests.swift; sourceTree = "<group>"; };
+		4A5BF28D25FAC358002E6FA8 /* AddToBasketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToBasketTests.swift; sourceTree = "<group>"; };
 		4A84DA2C25D299A400C57241 /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A84DA2F25D299A400C57241 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A84DA3125D299A400C57241 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +238,43 @@
 			path = GetReviewList;
 			sourceTree = "<group>";
 		};
+		4A5BF25B25FAC2E2002E6FA8 /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				4A5BF25C25FAC2E2002E6FA8 /* PayBasket */,
+				4A5BF25F25FAC2E3002E6FA8 /* AddToBasket */,
+				4A5BF26225FAC2E3002E6FA8 /* DeleteFromBasket */,
+			);
+			path = Basket;
+			sourceTree = "<group>";
+		};
+		4A5BF25C25FAC2E2002E6FA8 /* PayBasket */ = {
+			isa = PBXGroup;
+			children = (
+				4A5BF25D25FAC2E2002E6FA8 /* PayBasket.swift */,
+				4A5BF25E25FAC2E2002E6FA8 /* PayBasketRequestFactory.swift */,
+			);
+			path = PayBasket;
+			sourceTree = "<group>";
+		};
+		4A5BF25F25FAC2E3002E6FA8 /* AddToBasket */ = {
+			isa = PBXGroup;
+			children = (
+				4A5BF26025FAC2E3002E6FA8 /* AddToBasket.swift */,
+				4A5BF26125FAC2E3002E6FA8 /* AddToBasketRequestFactory.swift */,
+			);
+			path = AddToBasket;
+			sourceTree = "<group>";
+		};
+		4A5BF26225FAC2E3002E6FA8 /* DeleteFromBasket */ = {
+			isa = PBXGroup;
+			children = (
+				4A5BF26325FAC2E3002E6FA8 /* DeleteFromBasket.swift */,
+				4A5BF26425FAC2E3002E6FA8 /* DeleteFromBasketRequestFactory.swift */,
+			);
+			path = DeleteFromBasket;
+			sourceTree = "<group>";
+		};
 		4A6535E925D2A55D003A7674 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +311,9 @@
 				4A2E56CD25ECFE790055611A /* RemoveReviewResult.swift */,
 				4A2E56D225ECFFB50055611A /* ReviewListResult.swift */,
 				4A2E56D725ECFFF50055611A /* Review.swift */,
+				4A5BF26E25FAC309002E6FA8 /* PayBasketResult.swift */,
+				4A5BF27325FAC310002E6FA8 /* DeleteFromBasketResult.swift */,
+				4A5BF27825FAC316002E6FA8 /* AddToBasketResult.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -340,6 +404,9 @@
 				4A2E56DC25ED01590055611A /* AddReviewTests.swift */,
 				4A2E56E125ED02E50055611A /* RemoveReviewTests.swift */,
 				4A2E56E625ED041B0055611A /* ReviewListTests.swift */,
+				4A5BF27D25FAC350002E6FA8 /* PayBasketTests.swift */,
+				4A5BF28525FAC354002E6FA8 /* DeleteFromBasketTests.swift */,
+				4A5BF28D25FAC358002E6FA8 /* AddToBasketTests.swift */,
 			);
 			path = GBShopTests;
 			sourceTree = "<group>";
@@ -423,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC3267825D7E5110023702A /* RequestFactory.swift */,
+				4A5BF25B25FAC2E2002E6FA8 /* Basket */,
 				4A2E569725ECEBC00055611A /* Reviews */,
 				4A2A6FCA25DFAA870067EAE0 /* Catalog */,
 				4AB0351E25DAE6B200BD2992 /* Logout */,
@@ -589,6 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5BF27925FAC316002E6FA8 /* AddToBasketResult.swift in Sources */,
 				4A2E56AA25ECF6AC0055611A /* AddReviewRequestFactory.swift in Sources */,
 				4AC3267925D7E5110023702A /* RequestFactory.swift in Sources */,
 				4A2E56D325ECFFB50055611A /* ReviewListResult.swift in Sources */,
@@ -598,11 +667,14 @@
 				4AC3266425D7E3C60023702A /* LoginResult.swift in Sources */,
 				4A2A6FCC25DFAAB30067EAE0 /* CatalogData.swift in Sources */,
 				4AC3268325D7F5B80023702A /* RegistrationResult.swift in Sources */,
+				4A5BF26F25FAC309002E6FA8 /* PayBasketResult.swift in Sources */,
 				4AC326B425D80C700023702A /* LogoutResult.swift in Sources */,
+				4A5BF26925FAC2E3002E6FA8 /* DeleteFromBasket.swift in Sources */,
 				4A2A6FF725DFC93E0067EAE0 /* Product.swift in Sources */,
 				4AC3265725D7E0240023702A /* DataRequest.swift in Sources */,
 				4A2A6FDF25DFAB450067EAE0 /* CatalogResult.swift in Sources */,
 				4AC3267E25D7E6560023702A /* AbstractRequestFactory.swift in Sources */,
+				4A5BF26725FAC2E3002E6FA8 /* AddToBasket.swift in Sources */,
 				4A2E56B425ECF6C50055611A /* RemoveReview.swift in Sources */,
 				4AC3265F25D7E34D0023702A /* RequestRouter.swift in Sources */,
 				4A2E56BE25ECF6ED0055611A /* ReviewList.swift in Sources */,
@@ -615,18 +687,23 @@
 				4AC326A625D8087E0023702A /* ChangeUserDataRequestFactory.swift in Sources */,
 				4AC326D825D820430023702A /* LogoutRequestFactory.swift in Sources */,
 				4AC326DD25D8205F0023702A /* Logout.swift in Sources */,
+				4A5BF27425FAC310002E6FA8 /* DeleteFromBasketResult.swift in Sources */,
 				4AC326AC25D808AB0023702A /* ChangeUserDataResult.swift in Sources */,
 				4AC3268D25D7F6520023702A /* RegistrationRequestFactory.swift in Sources */,
 				4AC3266F25D7E4790023702A /* AuthRequestFactory.swift in Sources */,
+				4A5BF26625FAC2E3002E6FA8 /* PayBasketRequestFactory.swift in Sources */,
 				4A84DA3025D299A400C57241 /* AppDelegate.swift in Sources */,
 				4A2E56B925ECF6E70055611A /* ReviewListRequestFactory.swift in Sources */,
+				4A5BF26825FAC2E3002E6FA8 /* AddToBasketRequestFactory.swift in Sources */,
 				4A2E56CE25ECFE790055611A /* RemoveReviewResult.swift in Sources */,
 				4A2A6FD725DFAB010067EAE0 /* CatalogDataRequestFactory.swift in Sources */,
+				4A5BF26A25FAC2E3002E6FA8 /* DeleteFromBasketRequestFactory.swift in Sources */,
 				4A2E56D825ECFFF50055611A /* Review.swift in Sources */,
 				4A84DA3225D299A400C57241 /* SceneDelegate.swift in Sources */,
 				4AC3269E25D8085B0023702A /* ChangeUserData.swift in Sources */,
 				4AC3265125D7DFEC0023702A /* ErrorParser.swift in Sources */,
 				4A2E56C625ECF7720055611A /* AddReviewResult.swift in Sources */,
+				4A5BF26525FAC2E3002E6FA8 /* PayBasket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,13 +715,16 @@
 				4A2E56E725ED041B0055611A /* ReviewListTests.swift in Sources */,
 				4A2A6FF225DFC3CC0067EAE0 /* CatalogDataTests.swift in Sources */,
 				4A84DA4725D299A400C57241 /* GBShopTests.swift in Sources */,
+				4A5BF27E25FAC350002E6FA8 /* PayBasketTests.swift in Sources */,
 				4A2A6FB225DFA2960067EAE0 /* LogoutTests.swift in Sources */,
+				4A5BF28625FAC354002E6FA8 /* DeleteFromBasketTests.swift in Sources */,
 				4A2A6FC625DFA37B0067EAE0 /* ResponseCodable.swift in Sources */,
 				4A2E56E225ED02E50055611A /* RemoveReviewTests.swift in Sources */,
 				4A2E56DD25ED01590055611A /* AddReviewTests.swift in Sources */,
 				4A9CAC2225ECE28D00E427A8 /* ProductFromCatalogTests.swift in Sources */,
 				4A2A6FBC25DFA31D0067EAE0 /* RequestFactoryTests.swift in Sources */,
 				4A2A6FC125DFA35D0067EAE0 /* ChangeUserDataTests.swift in Sources */,
+				4A5BF28E25FAC358002E6FA8 /* AddToBasketTests.swift in Sources */,
 				4A2A6FAD25DFA2640067EAE0 /* AuthTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
