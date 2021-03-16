@@ -101,7 +101,7 @@ extension ChangeDataView {
                                      creditCardImageView,
                                      bioImageView])
         NSLayoutConstraint.activate([
-            infoLabel.bottomAnchor.constraint(equalTo: scrollView.topAnchor, constant: -40),
+            infoLabel.bottomAnchor.constraint(equalTo: scrollView.topAnchor, constant: -10),
             infoLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 40),
             infoLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -40),
             infoLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
