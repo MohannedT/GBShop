@@ -17,9 +17,6 @@ extension UITextField {
         self.isSecureTextEntry = isSecure
         self.translatesAutoresizingMaskIntoConstraints = false
         if isChangeData {
-        // self.attributedPlaceholder = NSAttributedString(string: placeholder,
-         //                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        // self.text = placeholder
             self.placeholder = nil
         }
     }

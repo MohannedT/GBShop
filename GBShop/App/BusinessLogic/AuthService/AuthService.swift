@@ -8,7 +8,6 @@
 import UIKit
 
 class AuthService {
-    static let shared = AuthService()
     private let requestFactory = RequestFactory()
 
     func login(userName: String?, password: String?, completion: @escaping (Result<User, Error>) -> Void) {
