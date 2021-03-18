@@ -5,8 +5,6 @@
 //  Created by Александр Ипатов on 11.03.2021.
 //
 
-import Foundation
-
 import UIKit
 
 class AuthViewController: UIViewController {
@@ -22,11 +20,18 @@ class AuthViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        authView.passwordTextField.text = "@!awdw1ivanIvanov"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         authView.addGestureRecognizer(tapGesture)
         addButtonTargets()
     }
     // MARK: - Methods
+    private func showLoader() {
+        authView.animationLoaderView.showLoadingView()
+    }
+    private func hideLoader() {
+        authView.animationLoaderView.hideLoadingView()
+    }
     private func addButtonTargets() {
         authView.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         authView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
@@ -43,6 +48,7 @@ class AuthViewController: UIViewController {
             case .success(let user):
                 self.user = user
                 DispatchQueue.main.async {
+                    self.hideLoader()
                     self.showAlert(with: "Welcome!",
                                    and: "\(user.username)") {
                         self.presentNextVC()
@@ -50,22 +56,22 @@ class AuthViewController: UIViewController {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
+                    self.hideLoader()
                     self.showAlert(with: "Oops!",
                                    and: error.localizedDescription)
                 }
             }
         }
     }
-        private func presentNextVC() {
-            guard let user = user else { showAlert(with: "Oops!",
-                                                   and: AuthError.unknownError.localizedDescription)
-                return
-
-            }
-            let changeDataVC = MainTabBarController(authService: auth, user: user)
-            changeDataVC.modalPresentationStyle = .fullScreen
-            present(changeDataVC, animated: true, completion: nil)
+    private func presentNextVC() {
+        guard let user = user else { showAlert(with: "Oops!",
+                                               and: AuthError.unknownError.localizedDescription)
+            return
         }
+        let changeDataVC = MainTabBarController(authService: auth, user: user)
+        changeDataVC.modalPresentationStyle = .fullScreen
+        present(changeDataVC, animated: true, completion: nil)
+    }
 
     // MARK: - keyboard methods
     @objc func hideKeyboard() {
@@ -78,6 +84,7 @@ extension AuthViewController {
         presentSignUp()
     }
     @objc private func loginButtonTapped() {
+        showLoader()
         tryToLogIn()
     }
 }

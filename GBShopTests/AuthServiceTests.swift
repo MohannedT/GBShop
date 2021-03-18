@@ -8,17 +8,17 @@ import XCTest
 @testable import GBShop
 
 class AuthServiceTests: XCTestCase {
-
     func testLogin() throws {
         let testLogin = expectation(description: "login")
-        AuthService.shared.login(userName: "Somebody", password: "ivanIvanov@!awdw1") { (result) in
+        let authService = AuthService()
+        authService.login(userName: "Somebody", password: "ivanIvanov@!awdw1") { (result) in
             switch result {
             case .success(let user):
                 XCTAssertEqual(user.idUser, 123)
                 XCTAssertEqual(user.email, "jonDoe@gmail.com")
                 XCTAssertEqual(user.username, "Jon Doe")
                 XCTAssertEqual(user.gender, "m")
-                XCTAssertEqual(user.creditCard, "123213123112")
+                XCTAssertEqual(user.creditCard, "1111111111111111")
                 XCTAssertEqual(user.bio, "Hey! I want to buy something")
                 testLogin.fulfill()
             case .failure(let error):
@@ -29,7 +29,8 @@ class AuthServiceTests: XCTestCase {
     }
     func testRegister() throws {
         let testRegister = expectation(description: "Register")
-        AuthService.shared.register(userName: "Somebody",
+        let authService = AuthService()
+        authService.register(userName: "Somebody",
                                     password: "ivanIvanov@!awdw1",
                                     email: "some@some.ru",
                                     conconfirmPassword:  "ivanIvanov@!awdw1",
@@ -48,7 +49,8 @@ class AuthServiceTests: XCTestCase {
     }
     func testChangeData() throws {
         let testChangeData = expectation(description: "ChangeData")
-        AuthService.shared.changeUserData(idUser: 123,
+        let authService = AuthService()
+        authService.changeUserData(idUser: 123,
                                           userName: "Somebody",
                                     password: "ivanIvanov@!awdw1",
                                     email: "some@some.ru",

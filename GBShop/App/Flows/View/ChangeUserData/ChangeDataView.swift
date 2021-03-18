@@ -10,6 +10,7 @@ import UIKit
 class ChangeDataView: UIView {
 
     // MARK: - Subviews
+    let animationLoaderView = LoadingView()
 
     let genderSegControl = UISegmentedControl(items: ["Male", "Female"])
     let userNameImageView = UIImageView(systemImageName: "person")
@@ -92,6 +93,9 @@ extension ChangeDataView {
         addSubview(scrollView)
         scrollView.addSubview(stackView)
         addSubview(saveButton)
+
+      addSubview(animationLoaderView)
+        animationLoaderView.translatesAutoresizingMaskIntoConstraints = false
         // MARK: Убрать хардкрод с высоты скрол вью
         scrollView.contentSize = CGSize(width: frame.width - 20, height: 450)
         layoutForImages(imageVeiws: [userNameImageView,
@@ -117,7 +121,12 @@ extension ChangeDataView {
 
             saveButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 20),
             saveButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.5),
-            saveButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
+            saveButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+
+            animationLoaderView.topAnchor.constraint(equalTo: topAnchor),
+            animationLoaderView.widthAnchor.constraint(equalTo: widthAnchor),
+            animationLoaderView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            animationLoaderView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

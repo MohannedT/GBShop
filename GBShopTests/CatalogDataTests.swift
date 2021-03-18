@@ -28,11 +28,13 @@ class CatalogDataTests: XCTestCase {
             switch response.result {
             case .success(let catalog):
                 XCTAssertEqual(catalog.products.first?.idProduct, 123)
-                XCTAssertEqual(catalog.products.first?.productName, "Ноутбук")
-                XCTAssertEqual(catalog.products.first?.price, 45600)
+                XCTAssertEqual(catalog.products.first?.productName,
+                               "Ноутбук Apple MacBook Air 13 Late 2020 (Apple M1/13.3/2560x1600/8GB/256GB SSD/DVD нет/Apple graphics 7-core/Wi-Fi/macOS)")
+                XCTAssertEqual(catalog.products.first?.price, 125000)
                 XCTAssertEqual(catalog.products[1].idProduct, 456)
-                XCTAssertEqual(catalog.products[1].productName, "Мышка")
-                XCTAssertEqual(catalog.products[1].price, 1000)
+                XCTAssertEqual(catalog.products[1].productName,
+                               "Ноутбук Apple MacBook Pro 13 Late 2020 (Apple M1/13/2560x1600/8GB/256GB SSD/DVD нет/Apple graphics 8-core/Wi-Fi/Bluetooth/macOS)")
+                XCTAssertEqual(catalog.products[1].price, 100000)
                 getCatalog.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

@@ -9,10 +9,10 @@ import UIKit
 import Lottie
 
 class AuthView: UIView {
-
     // MARK: - Subviews
-
     let animationView = AnimationView(name: "loginLottie")
+
+    let animationLoaderView = LoadingView()
 
     let userNameImageView = UIImageView(systemImageName: "person")
     let passwordImageView = UIImageView(systemImageName: "lock")
@@ -33,7 +33,6 @@ class AuthView: UIView {
         super.init(frame: frame)
         setupUI()
         animationSetup()
-       animationView.play()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,12 +63,15 @@ extension AuthView {
                                           axis: .vertical,
                                           spacing: 0)
         backgroundColor = .white
+
         addSubview(logoView)
         addSubview(stackView)
         addSubview(loginButton)
         addSubview(signUpStackView)
         addSubview(animationView)
+        addSubview(animationLoaderView)
         animationView.translatesAutoresizingMaskIntoConstraints = false
+        // loaderView.isHidden = true
         NSLayoutConstraint.activate([
             logoView.heightAnchor.constraint(equalToConstant: 70),
             logoView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
@@ -95,7 +97,12 @@ extension AuthView {
             loginButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
 
             signUpStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            signUpStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
+            signUpStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            animationLoaderView.topAnchor.constraint(equalTo: topAnchor),
+            animationLoaderView.widthAnchor.constraint(equalTo: widthAnchor),
+            animationLoaderView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            animationLoaderView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

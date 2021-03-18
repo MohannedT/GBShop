@@ -10,6 +10,7 @@ import UIKit
 class RegisterView: UIView {
 
     // MARK: - Subviews
+    let animationLoaderView = LoadingView()
 
     let genderSegControl = UISegmentedControl(items: ["Male", "Female"])
     let userNameImageView = UIImageView(systemImageName: "person")
@@ -49,6 +50,7 @@ class RegisterView: UIView {
 
 // MARK: - Setup constraints
 extension RegisterView {
+
     private func layoutForImages(imageVeiws: [UIImageView]) {
         imageVeiws.forEach({ (image) in
             NSLayoutConstraint.activate([
@@ -91,12 +93,13 @@ extension RegisterView {
                                                        bioStackView],
                                     axis: .vertical,
                                     spacing: 30)
-     backgroundColor = .white
-     addSubview(logoView)
-     addSubview(scrollView)
+        backgroundColor = .white
+        addSubview(logoView)
+        addSubview(scrollView)
         scrollView.addSubview(stackView)
-     addSubview(signUpButton)
-     addSubview(backButton)
+        addSubview(signUpButton)
+        addSubview(backButton)
+        addSubview(animationLoaderView)
         // MARK: Убрать хардкрод с высоты скрол вью
         scrollView.contentSize = CGSize(width: frame.width - 20, height: 450)
         layoutForImages(imageVeiws: [userNameImageView,
@@ -105,6 +108,7 @@ extension RegisterView {
                                      emailImageView,
                                      creditCardImageView,
                                      bioImageView])
+
         NSLayoutConstraint.activate([
             logoView.heightAnchor.constraint(equalToConstant: 70),
             logoView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
@@ -125,7 +129,12 @@ extension RegisterView {
             signUpButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 
             backButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            backButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
+            backButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
+
+            animationLoaderView.topAnchor.constraint(equalTo: topAnchor),
+            animationLoaderView.widthAnchor.constraint(equalTo: widthAnchor),
+            animationLoaderView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            animationLoaderView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

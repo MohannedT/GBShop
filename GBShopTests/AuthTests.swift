@@ -31,7 +31,7 @@ class AuthTests: XCTestCase {
                 XCTAssertEqual(login.user.idUser, 123)
                 XCTAssertEqual(login.user.username, "Jon Doe")
                 XCTAssertEqual(login.user.email, "jonDoe@gmail.com")
-                XCTAssertEqual(login.user.creditCard, "123213123112")
+                XCTAssertEqual(login.user.creditCard, "1111111111111111")
                 XCTAssertEqual(login.user.bio, "Hey! I want to buy something")
                 XCTAssertEqual(login.user.gender, "m")
                 loggedIn.fulfill()

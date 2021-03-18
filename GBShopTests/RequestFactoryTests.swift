@@ -103,7 +103,7 @@ class RequestFactoryTests: XCTestCase {
         catalog.getCatalog(pageNumber: 1, idCategory: 1) { (response) in
             switch response.result {
             case .success(let catalog):
-                XCTAssertEqual(catalog.products.count, 2)
+                XCTAssertEqual(catalog.products.count, 9)
                 getCatalog.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

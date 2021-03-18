@@ -45,6 +45,13 @@ class RegisterViewController: UIViewController {
         registerView.addGestureRecognizer(tapGesture)
     }
     // MARK: - Methods
+    private func showLoader() {
+        registerView.animationLoaderView.showLoadingView()
+    }
+    private func hideLoader() {
+        registerView.animationLoaderView.hideLoadingView()
+    }
+
     private func addButtonTargets() {
         registerView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         registerView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
@@ -55,25 +62,27 @@ class RegisterViewController: UIViewController {
     }
     private func tryToSignUp() {
         authService.register(userName: registerView.userNameTextField.text,
-                      password: registerView.passwordTextField.text,
-                      email: registerView.emailTextField.text,
-                      conconfirmPassword: registerView.confirmPasswordTextField.text,
-                      gender: userGender,
-                      creditCard: registerView.creditCardTextField.text,
-                      bio:  registerView.bioTextField.text) { (result) in
+                             password: registerView.passwordTextField.text,
+                             email: registerView.emailTextField.text,
+                             conconfirmPassword: registerView.confirmPasswordTextField.text,
+                             gender: userGender,
+                             creditCard: registerView.creditCardTextField.text,
+                             bio:  registerView.bioTextField.text) { (result) in
             switch result {
             case .success(let result):
                 self.user = result
                 // MARK: Разобраться с потоками
                 DispatchQueue.main.async {
+                    self.hideLoader()
                     self.showAlert(with: "Welcome!", and: "\(result.username)") {
                         self.presentNextVC()
                     }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                self.showAlert(with: "Oops!", and: error.localizedDescription)
-            }
+                    self.hideLoader()
+                    self.showAlert(with: "Oops!", and: error.localizedDescription)
+                }
             }
         }
     }
@@ -106,6 +115,7 @@ class RegisterViewController: UIViewController {
 extension RegisterViewController {
 
     @objc private func signUpButtonTapped() {
+        showLoader()
         tryToSignUp()
     }
     @objc private func backButtonTapped() {

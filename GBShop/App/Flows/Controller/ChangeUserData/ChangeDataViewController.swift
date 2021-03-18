@@ -50,6 +50,12 @@ class ChangeDataViewController: UIViewController {
         addButtonTargets()
     }
     // MARK: - Methods
+    private func showLoader() {
+        changeDataView.animationLoaderView.showLoadingView()
+    }
+    private func hideLoader() {
+        changeDataView.animationLoaderView.hideLoadingView()
+    }
     private func addButtonTargets() {
         changeDataView.saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         changeDataView.genderSegControl.addTarget(self, action: #selector(genderSegTapped), for: .valueChanged)
@@ -60,47 +66,50 @@ class ChangeDataViewController: UIViewController {
     }
     private func tryToSaveInfo() {
         authService.changeUserData(idUser: user.idUser, userName: changeDataView.userNameTextField.text,
-                      password: changeDataView.passwordTextField.text,
-                      email: changeDataView.emailTextField.text,
-                      conconfirmPassword: changeDataView.confirmPasswordTextField.text,
-                      gender: userGender,
-                      creditCard: changeDataView.creditCardTextField.text,
-                      bio:  changeDataView.bioTextField.text) { (result) in
+                                   password: changeDataView.passwordTextField.text,
+                                   email: changeDataView.emailTextField.text,
+                                   conconfirmPassword: changeDataView.confirmPasswordTextField.text,
+                                   gender: userGender,
+                                   creditCard: changeDataView.creditCardTextField.text,
+                                   bio:  changeDataView.bioTextField.text) { (result) in
             switch result {
             case .success:
                 // MARK: Разобраться с потоками
                 DispatchQueue.main.async {
-                    self.showAlert(with: "Welcome!",
+                    self.hideLoader()
+                    self.showAlert(with: "Success!",
                                    and: "Data changed successfully")
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                self.showAlert(with: "Oops!",
-                               and: error.localizedDescription)
-            }
+                    self.hideLoader()
+                    self.showAlert(with: "Oops!",
+                                   and: error.localizedDescription)
+                }
             }
         }
     }
 
     // MARK: - keyboard methods
-        @objc func keyboardWillShown(notification: Notification) {
-              let info = notification.userInfo! as NSDictionary
-              let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
-              let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0)
-            changeDataView.scrollView.contentInset = contentInsets
-            changeDataView.scrollView.scrollIndicatorInsets = contentInsets
-          }
-        @objc func hideKeyboard() {
-            changeDataView.endEditing(true)
-         }
-        @objc func keyboardWillHide(notification: Notification) {
-            changeDataView.scrollView.contentInset = UIEdgeInsets.zero
-            changeDataView.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
-        }
+    @objc func keyboardWillShown(notification: Notification) {
+        let info = notification.userInfo! as NSDictionary
+        let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0)
+        changeDataView.scrollView.contentInset = contentInsets
+        changeDataView.scrollView.scrollIndicatorInsets = contentInsets
     }
+    @objc func hideKeyboard() {
+        changeDataView.endEditing(true)
+    }
+    @objc func keyboardWillHide(notification: Notification) {
+        changeDataView.scrollView.contentInset = UIEdgeInsets.zero
+        changeDataView.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+}
 // MARK: - Actions
 extension ChangeDataViewController {
     @objc private func saveButtonTapped() {
+        showLoader()
         tryToSaveInfo()
     }
     @objc private func genderSegTapped() {
@@ -110,7 +119,7 @@ extension ChangeDataViewController {
         default:
             break
         }
-}
+    }
 }
 // MARK: - SetupTextFieldsData
 extension ChangeDataViewController {
