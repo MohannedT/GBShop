@@ -20,7 +20,6 @@ class AuthViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        authView.passwordTextField.text = "@!awdw1ivanIvanov"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         authView.addGestureRecognizer(tapGesture)
         addButtonTargets()
