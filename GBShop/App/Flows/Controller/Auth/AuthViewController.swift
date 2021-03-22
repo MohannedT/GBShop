@@ -8,7 +8,8 @@
 import UIKit
 
 class AuthViewController: UIViewController {
-    let auth = AuthService()
+
+    var authService: AuthService
     var user: User?
     private  var authView: AuthView {
         view as! AuthView
@@ -24,6 +25,14 @@ class AuthViewController: UIViewController {
         authView.addGestureRecognizer(tapGesture)
         addButtonTargets()
     }
+    init(authService: AuthService) {
+        self.authService = authService
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Methods
     private func showLoader() {
         authView.animationLoaderView.showLoadingView()
@@ -36,12 +45,12 @@ class AuthViewController: UIViewController {
         authView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     private func presentSignUp() {
-        let registerVC = RegisterViewController(authService: auth)
+        let registerVC = RegisterViewController(authService: authService)
         registerVC.modalPresentationStyle = .fullScreen
         present(registerVC, animated: true, completion: nil)
     }
     private func tryToLogIn() {
-        auth.login(userName: authView.userNameTextField.text,
+        authService.login(userName: authView.userNameTextField.text,
                    password: authView.passwordTextField.text) { (result) in
             switch result {
             case .success(let user):
@@ -67,7 +76,7 @@ class AuthViewController: UIViewController {
                                                and: AuthError.unknownError.localizedDescription)
             return
         }
-        let changeDataVC = MainTabBarController(authService: auth, user: user)
+        let changeDataVC = MainTabBarController(authService: authService, user: user)
         changeDataVC.modalPresentationStyle = .fullScreen
         present(changeDataVC, animated: true, completion: nil)
     }
@@ -85,27 +94,5 @@ extension AuthViewController {
     @objc private func loginButtonTapped() {
         showLoader()
         tryToLogIn()
-    }
-}
-
-// MARK: - SwiftUI
-import SwiftUI
-
-struct AuthV2VCProvider: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContainerView().previewDevice("iPhone 12 Pro Max").edgesIgnoringSafeArea(.all)
-            ContainerView().previewDevice("iPhone 8").edgesIgnoringSafeArea(.all)
-        }
-    }
-    struct ContainerView: UIViewControllerRepresentable {
-        let viewController = AuthViewController()
-        func makeUIViewController(context: UIViewControllerRepresentableContext<AuthV2VCProvider.ContainerView>)
-        -> AuthViewController {
-            return viewController
-        }
-        func updateUIViewController(_ uiViewController: AuthV2VCProvider.ContainerView.UIViewControllerType,
-                                    context: UIViewControllerRepresentableContext<AuthV2VCProvider.ContainerView>) {
-        }
     }
 }

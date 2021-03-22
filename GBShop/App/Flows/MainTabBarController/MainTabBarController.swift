@@ -24,6 +24,7 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let catalogViewController = CatalogCollectionViewController(user: user, requestFactory: authService.requestFactory)
 
         let changeDataViewController = ChangeDataViewController(authService: authService,user: user )
 
@@ -31,8 +32,12 @@ class MainTabBarController: UITabBarController {
         let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
         let changeDataImage = UIImage(systemName: "person", withConfiguration: boldConfig)!
         let changeDataImageSelected = UIImage(systemName: "person.fill", withConfiguration: boldConfig)!
-
-        viewControllers = [
+        let catalogImage = UIImage(systemName: "table", withConfiguration: boldConfig)!
+        let catalogImageSelected = UIImage(systemName: "table.fill", withConfiguration: boldConfig)!
+        viewControllers = [     generateNavigationController(rootViewController: catalogViewController, title: "Catalog",
+                                                             image: catalogImage,
+                                                             selectedImage:
+                                                                catalogImageSelected),
             generateNavigationController(rootViewController: changeDataViewController,
                                          title: "User",
                                          image: changeDataImage,
