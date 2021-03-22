@@ -30,7 +30,7 @@ extension Registration: RegistrationRequestFactory {
                       userName: String,
                       password: String,
                       email: String,
-                      gender: Character,
+                      gender: String,
                       creditCard: String,
                       bio: String,
                       completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void) {
@@ -55,7 +55,7 @@ extension Registration {
         let username: String
         let password: String
         let email: String
-        let gender: Character
+        let gender: String
         let creditCard: String
         let bio: String
         var parameters: Parameters? {

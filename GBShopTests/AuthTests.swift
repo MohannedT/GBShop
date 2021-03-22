@@ -29,10 +29,11 @@ class AuthTests: XCTestCase {
             case .success(let login):
                 XCTAssertEqual(login.result, 1)
                 XCTAssertEqual(login.user.idUser, 123)
-                XCTAssertEqual(login.user.login, "geekbrains")
-                XCTAssertEqual(login.user.name, "John")
-                XCTAssertEqual(login.user.lastname, "Doe")
-
+                XCTAssertEqual(login.user.username, "Jon Doe")
+                XCTAssertEqual(login.user.email, "jonDoe@gmail.com")
+                XCTAssertEqual(login.user.creditCard, "1111111111111111")
+                XCTAssertEqual(login.user.bio, "Hey! I want to buy something")
+                XCTAssertEqual(login.user.gender, "m")
                 loggedIn.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

@@ -13,7 +13,7 @@ protocol RegistrationRequestFactory {
                       userName: String,
                       password: String,
                       email: String,
-                      gender: Character,
+                      gender: String,
                       creditCard: String,
                       bio: String,
                       completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void)

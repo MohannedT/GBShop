@@ -12,9 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // swiftlint:disable unused_optional_binding
-        guard let _ = (scene as? UIWindowScene) else { return }
-        // swiftlint:enable unused_optional_binding
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.overrideUserInterfaceStyle = .light
+        window?.windowScene = windowScene
+        window?.rootViewController = AuthViewController()
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
