@@ -7,9 +7,8 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-
     let authService: AuthService
-
+    var analytics: FirebaseAnalytics
     var user: User?
 
     private var userGender: String?
@@ -22,7 +21,9 @@ class RegisterViewController: UIViewController {
         super.loadView()
         self.view = RegisterView()
     }
-    init(authService: AuthService) {
+    // MARK: - Init
+    init(authService: AuthService, analytics: FirebaseAnalytics) {
+        self.analytics = analytics
         self.authService = authService
         super.init(nibName: nil, bundle: nil)
     }
@@ -62,12 +63,12 @@ class RegisterViewController: UIViewController {
     }
     private func tryToSignUp() {
         authService.register(userName: registerView.userNameTextField.text,
-                             password: registerView.passwordTextField.text,
-                             email: registerView.emailTextField.text,
-                             conconfirmPassword: registerView.confirmPasswordTextField.text,
-                             gender: userGender,
-                             creditCard: registerView.creditCardTextField.text,
-                             bio:  registerView.bioTextField.text) { (result) in
+                      password: registerView.passwordTextField.text,
+                      email: registerView.emailTextField.text,
+                      conconfirmPassword: registerView.confirmPasswordTextField.text,
+                      gender: userGender,
+                      creditCard: registerView.creditCardTextField.text,
+                      bio:  registerView.bioTextField.text) { (result) in
             switch result {
             case .success(let result):
                 self.user = result
@@ -75,14 +76,15 @@ class RegisterViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.hideLoader()
                     self.showAlert(with: "Welcome!", and: "\(result.username)") {
+                        self.analytics.signUp()
                         self.presentNextVC()
                     }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.hideLoader()
-                    self.showAlert(with: "Oops!", and: error.localizedDescription)
-                }
+                self.showAlert(with: "Oops!", and: error.localizedDescription)
+            }
             }
         }
     }
@@ -91,7 +93,7 @@ class RegisterViewController: UIViewController {
                                                and: AuthError.unknownError.localizedDescription)
             return
         }
-        let tabBarVC = MainTabBarController(authService: authService, user: user)
+        let tabBarVC = MainTabBarController(authService: authService, user: user, analytics: analytics)
         tabBarVC.modalPresentationStyle = .fullScreen
         present(tabBarVC, animated: true, completion: nil)
     }

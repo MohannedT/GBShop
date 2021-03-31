@@ -8,6 +8,7 @@
 import UIKit
 
 class BasketViewController: UIViewController {
+    var analytics: FirebaseAnalytics
     private let user: User
     private let requestFactory: RequestFactory
     private var basket: GetBasketResult? {
@@ -25,7 +26,8 @@ class BasketViewController: UIViewController {
     }
 
     // MARK: - Init
-    init(user: User, requestFactory: RequestFactory) {
+    init(user: User, requestFactory: RequestFactory, analytics: FirebaseAnalytics) {
+        self.analytics = analytics
         self.requestFactory = requestFactory
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -73,6 +75,7 @@ class BasketViewController: UIViewController {
             switch response.result {
             case .success:
                 DispatchQueue.main.async {
+                    self.analytics.payBasket(paymentAmount: self.basket?.amount ?? 0)
                     self.showAlert(with: "Congratulations!", and: "Payment successful, wait for a call from our operator")
                 }
             case .failure(let error):
@@ -118,7 +121,8 @@ class BasketViewController: UIViewController {
     private func presentDetailViewController(idProduct: Int) {
         navigationController?.pushViewController(DetailProductViewContriller(user: user,
                                                                              requestFactory: requestFactory,
-                                                                             idProduct: idProduct),
+                                                                             idProduct: idProduct,
+                                                                             analytics: analytics),
                                                  animated: true)
     }
 
@@ -161,6 +165,7 @@ extension BasketViewController {
             deleteFromBasket(productIndex: indexPath)
             basket?.contents.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            analytics.removeFromBasket(idProduct: basket?.contents[indexPath.row].idProduct ?? 0)
         }
     }
 }

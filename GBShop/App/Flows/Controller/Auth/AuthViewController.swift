@@ -8,7 +8,7 @@
 import UIKit
 
 class AuthViewController: UIViewController {
-
+    var analytics: FirebaseAnalytics
     var authService: AuthService
     var user: User?
     private  var authView: AuthView {
@@ -25,11 +25,12 @@ class AuthViewController: UIViewController {
         authView.addGestureRecognizer(tapGesture)
         addButtonTargets()
     }
-    init(authService: AuthService) {
+    // MARK: - Init
+    init(authService: AuthService, analytics: FirebaseAnalytics) {
+        self.analytics = analytics
         self.authService = authService
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -45,7 +46,7 @@ class AuthViewController: UIViewController {
         authView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     private func presentSignUp() {
-        let registerVC = RegisterViewController(authService: authService)
+        let registerVC = RegisterViewController(authService: authService, analytics: analytics)
         registerVC.modalPresentationStyle = .fullScreen
         present(registerVC, animated: true, completion: nil)
     }
@@ -76,9 +77,9 @@ class AuthViewController: UIViewController {
                                                and: AuthError.unknownError.localizedDescription)
             return
         }
-        let changeDataVC = MainTabBarController(authService: authService, user: user)
-        changeDataVC.modalPresentationStyle = .fullScreen
-        present(changeDataVC, animated: true, completion: nil)
+        let tabBarVC = MainTabBarController(authService: authService, user: user, analytics: analytics)
+        tabBarVC.modalPresentationStyle = .fullScreen
+        present(tabBarVC, animated: true, completion: nil)
     }
 
     // MARK: - keyboard methods

@@ -35,7 +35,6 @@ class ChangeDataView: UIView {
                             font: .infoTextFont())
 
     // MARK: - Init
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupUI()

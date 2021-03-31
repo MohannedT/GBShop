@@ -8,6 +8,7 @@
 import UIKit
 
 class DetailProductViewContriller: UIViewController {
+    var analytics: FirebaseAnalytics
     private let idProduct: Int
     private let user: User
     private let requestFactory: RequestFactory
@@ -35,7 +36,8 @@ class DetailProductViewContriller: UIViewController {
     }
 
     // MARK: - Init
-    init(user: User, requestFactory: RequestFactory, idProduct: Int) {
+    init(user: User, requestFactory: RequestFactory, idProduct: Int, analytics: FirebaseAnalytics ) {
+        self.analytics = analytics
         self.idProduct = idProduct
         self.requestFactory = requestFactory
         self.user = user
@@ -58,6 +60,7 @@ class DetailProductViewContriller: UIViewController {
         getProduct()
         reloadData()
         addButtonTarget()
+        self.analytics.viewProduct(idProduct: idProduct)
     }
     // MARK: - Methods
     private func addButtonTarget() {
@@ -92,6 +95,7 @@ class DetailProductViewContriller: UIViewController {
             case .success:
                 DispatchQueue.main.async {
                     self.showAlert(with: "", and: "The product was successfully added to the basket")
+                    self.analytics.addToBasket(idProduct: self.idProduct)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -186,4 +190,11 @@ extension DetailProductViewContriller {
 
 // MARK: - UICollectionViewDelegate
 extension DetailProductViewContriller: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else { return }
+        if section == .addReview {
+            let addReviewVC = AddReviewViewController(user: user, requestFactory: requestFactory, analytics: analytics)
+            present(addReviewVC, animated: true, completion: nil)
+        }
+    }
     }

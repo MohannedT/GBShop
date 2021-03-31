@@ -8,10 +8,12 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+    var analytics: FirebaseAnalytics
     var authService: AuthService
     var user: User
     // MARK: - Init
-    init(authService: AuthService, user: User) {
+    init(authService: AuthService, user: User, analytics: FirebaseAnalytics) {
+        self.analytics = analytics
         self.authService = authService
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -24,11 +26,14 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let catalogViewController = CatalogCollectionViewController(user: user,
-                                                                    requestFactory: authService.requestFactory)
+                                                                    requestFactory: authService.requestFactory,
+                                                                    analytics: analytics)
         let basketViewController =  BasketViewController(user: user,
-                                                         requestFactory: authService.requestFactory)
+                                                         requestFactory: authService.requestFactory,
+                                                         analytics: analytics)
         let changeDataViewController = ChangeDataViewController(authService: authService,
-                                                                user: user)
+                                                                user: user,
+                                                                analytics: analytics)
         tabBar.tintColor = .black
         let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
 
