@@ -11,6 +11,7 @@ import Alamofire
 class RequestFactory {
 
     let baseUrl = URL(string: "https://calm-basin-71582.herokuapp.com/")!
+  // let baseUrl = URL(string: "http://127.0.0.1:8080")!
 
     func makeErrorParser() -> AbstractErrorParser {
         return ErrorParser()
@@ -111,6 +112,13 @@ class RequestFactory {
     func makeAddToBasketRequestFactory() -> AddToBasketRequestFactory {
         let errorParser = makeErrorParser()
     return AddToBasket(errorParser: errorParser,
+                      sessionManager: commonSession,
+                      baseURL: baseUrl,
+                      queue: sessionQueue)
+    }
+    func makeGetBasketRequestFactory() -> GetBasketREqestFactory {
+        let errorParser = makeErrorParser()
+    return GetBasket(errorParser: errorParser,
                       sessionManager: commonSession,
                       baseURL: baseUrl,
                       queue: sessionQueue)

@@ -8,10 +8,9 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-
     var authService: AuthService
     var user: User
-
+    // MARK: - Init
     init(authService: AuthService, user: User) {
         self.authService = authService
         self.user = user
@@ -24,25 +23,36 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let catalogViewController = CatalogCollectionViewController(user: user, requestFactory: authService.requestFactory)
-
-        let changeDataViewController = ChangeDataViewController(authService: authService,user: user )
-
-        tabBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        let catalogViewController = CatalogCollectionViewController(user: user,
+                                                                    requestFactory: authService.requestFactory)
+        let basketViewController =  BasketViewController(user: user,
+                                                         requestFactory: authService.requestFactory)
+        let changeDataViewController = ChangeDataViewController(authService: authService,
+                                                                user: user)
+        tabBar.tintColor = .black
         let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
-        let changeDataImage = UIImage(systemName: "person", withConfiguration: boldConfig)!
-        let changeDataImageSelected = UIImage(systemName: "person.fill", withConfiguration: boldConfig)!
+
         let catalogImage = UIImage(systemName: "table", withConfiguration: boldConfig)!
+        let changeDataImage = UIImage(systemName: "person", withConfiguration: boldConfig)!
+        let basketImage = UIImage(systemName: "cart", withConfiguration: boldConfig)!
+
         let catalogImageSelected = UIImage(systemName: "table.fill", withConfiguration: boldConfig)!
-        viewControllers = [     generateNavigationController(rootViewController: catalogViewController, title: "Catalog",
-                                                             image: catalogImage,
-                                                             selectedImage:
-                                                                catalogImageSelected),
+        let changeDataImageSelected = UIImage(systemName: "person.fill", withConfiguration: boldConfig)!
+        let basketImageSelected = UIImage(systemName: "cart.fill", withConfiguration: boldConfig)!
+
+        viewControllers = [
+            generateNavigationController(rootViewController: catalogViewController, title: "Catalog",
+                                         image: catalogImage,
+                                         selectedImage:
+                                            catalogImageSelected),
+            generateNavigationController(rootViewController: basketViewController,
+                                         title: "Basket",
+                                         image: basketImage,
+                                         selectedImage: basketImageSelected),
             generateNavigationController(rootViewController: changeDataViewController,
                                          title: "User",
                                          image: changeDataImage,
                                          selectedImage: changeDataImageSelected)
-
         ]
     }
 
