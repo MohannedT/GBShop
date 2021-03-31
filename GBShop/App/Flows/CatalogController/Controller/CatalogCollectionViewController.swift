@@ -73,7 +73,6 @@ class CatalogCollectionViewController: UIViewController {
     self.setupSearchBar()
     self.setupCollectionView()
     self.updatePresentationStyle()
-
     }
     // MARK: - Methods
 
@@ -84,6 +83,11 @@ class CatalogCollectionViewController: UIViewController {
         catalogView.collectionView.contentInset = .zero
     }
     private func presentNextVC(item: IndexPath) {
+        let idProduct = products[item.row].idProduct
+        navigationController?.pushViewController(DetailProductViewContriller(user: user,
+                                                                             requestFactory: requestFactory,
+                                                                             idProduct: idProduct),
+                                                 animated: true)
     }
     private func getCatalog() {
         let catalogFactory = requestFactory.makeCatalogRequestFactory()

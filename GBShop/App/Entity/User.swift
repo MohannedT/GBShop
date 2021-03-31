@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Codable, Hashable {
     let idUser: Int
     let username, email: String
     let gender, creditCard, bio: String
@@ -20,3 +20,4 @@ struct User: Codable {
         case bio
     }
 }
+
