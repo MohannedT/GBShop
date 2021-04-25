@@ -9,7 +9,7 @@ import Lottie
 
 class DetailCatalogVeiw: UIView {
     let animationView = AnimationView(name: "loadingCatalog2")
-   // var isItTapped = false
+
     // MARK: - Subviews
     private(set) lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: bounds, collectionViewLayout: createCompositionalLayout())
