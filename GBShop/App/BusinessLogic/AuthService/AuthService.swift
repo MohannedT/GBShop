@@ -8,7 +8,17 @@
 import UIKit
 
 class AuthService {
-    private let requestFactory = RequestFactory()
+
+     var requestFactory: RequestFactory
+
+    init(requestFactory: RequestFactory) {
+        self.requestFactory = requestFactory
+
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     func login(userName: String?, password: String?, completion: @escaping (Result<User, Error>) -> Void) {
         guard let userName = userName, let password = password else {
