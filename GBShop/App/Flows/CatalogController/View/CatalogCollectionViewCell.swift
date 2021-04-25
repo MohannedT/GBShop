@@ -62,6 +62,9 @@ class CatalogCollectionViewCell: UICollectionViewCell {
         updateContentStyle()
     }
 
+    override func prepareForReuse() {
+        self.productImageView.kf.cancelDownloadTask()
+    }
      // MARK: - Methods
 
     private func updateContentStyle() {

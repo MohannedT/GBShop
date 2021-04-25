@@ -63,11 +63,6 @@ class AddReviewViewController: UIViewController {
         }
 
     }
-//    private func setUpReview() {
-//        if addReviewView.ratingView.starButtonRating1.isSelected {
-//            print(addReviewView.ratingView.starButtonRating1)
-//        }
-//    }
     // MARK: - keyboard methods
     @objc func hideKeyboard() {
         addReviewView.endEditing(true)

@@ -90,8 +90,8 @@ class BasketViewController: UIViewController {
         basketFactory.getBasket(idUser: user.idUser) { (response) in
             switch response.result {
             case .success(let basket):
-                self.basket = basket
                 DispatchQueue.main.async {
+                self.basket = basket
                     self.basketView.payBasketVeiw.priceLabel.text = "\(basket.amount) руб"
                 }
             case .failure(let error):

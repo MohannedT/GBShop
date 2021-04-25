@@ -64,7 +64,6 @@ class CatalogCollectionViewController: UIViewController {
     }
     // MARK: - Lifecycle
   override func loadView() {
-        super.loadView()
         self.view = CatalogView()
     }
    override func viewDidLoad() {
@@ -96,17 +95,18 @@ class CatalogCollectionViewController: UIViewController {
     }
     private func getCatalog() {
         let catalogFactory = requestFactory.makeCatalogRequestFactory()
-        catalogFactory.getCatalog(pageNumber: 1, idCategory: 1) { (response) in
-            switch response.result {
-            case .success(let catalog):
+        DispatchQueue.main.async {
+            catalogFactory.getCatalog(pageNumber: 1, idCategory: 1) { (response) in
+                switch response.result {
+                case .success(let catalog):
                     self.products = catalog.products
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.showAlert(with: "Oops!", and: error.localizedDescription)
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.showAlert(with: "Oops!", and: error.localizedDescription)
+                    }
                 }
             }
         }
-
     }
     private func setupSearchBar() {
         searchController.searchResultsUpdater = self

@@ -35,7 +35,6 @@ class CatalogView: UIView {
 }
 // MARK: - Setup UI
 extension CatalogView {
-
     private func animationSetup() {
         animationView.animationSpeed = 1
         animationView.loopMode = .loop
