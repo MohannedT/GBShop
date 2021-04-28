@@ -28,9 +28,8 @@ class ReviewListTests: XCTestCase {
             switch response.result {
             case .success(let rev):
                 XCTAssertEqual(rev.result, 1)
-                XCTAssertEqual(rev.reviews.count, 2)
-                XCTAssertEqual(rev.reviews.first?.idUser, 123)
-                XCTAssertEqual(rev.reviews.first?.text, "Текст отзыва")
+                XCTAssertEqual(rev.reviews.count, 3)
+                XCTAssertEqual(rev.reviews.first?.text, "My first epl. The first hour experienced a tactile orgasm from everything that the box provided me. The transition from Windows was not .")
                 gotReviewList.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

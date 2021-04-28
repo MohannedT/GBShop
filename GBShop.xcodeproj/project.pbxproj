@@ -278,6 +278,8 @@
 		4AC326B325D80C700023702A /* LogoutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResult.swift; sourceTree = "<group>"; };
 		4AC326D725D820430023702A /* LogoutRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequestFactory.swift; sourceTree = "<group>"; };
 		4AC326DC25D8205F0023702A /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		4AC6FC9E263A0705002AA99B /* GBShopFastTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = GBShopFastTests.xctestplan; sourceTree = "<group>"; };
+		4AC6FCA9263A0794002AA99B /* GBShopSlowTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = GBShopSlowTests.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -777,6 +779,8 @@
 		4A84DA2325D299A400C57241 = {
 			isa = PBXGroup;
 			children = (
+				4AC6FCA9263A0794002AA99B /* GBShopSlowTests.xctestplan */,
+				4AC6FC9E263A0705002AA99B /* GBShopFastTests.xctestplan */,
 				4A84DA2E25D299A400C57241 /* GBShop */,
 				4A84DA4525D299A400C57241 /* GBShopTests */,
 				4A84DA5025D299A400C57241 /* GBShopUITests */,

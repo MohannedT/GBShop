@@ -121,9 +121,11 @@ class RequestFactoryTests: XCTestCase {
             switch response.result {
             case .success(let prod):
                 XCTAssertEqual(prod.result, 1)
-                XCTAssertEqual(prod.productName, "Ноутбук")
+                XCTAssertEqual(prod.productName, "Ноутбук APPLE MacBook Pro M1 13.3, IPS, Apple M1 8ГБ, 256ГБ SSD, Mac OS, MYDA2RU/A, серебристый")
                 XCTAssertEqual(prod.productPrice, 45600)
-                XCTAssertEqual(prod.productDescription, "Мощный игровой ноутбук")
+                XCTAssertEqual(prod.productDescription, """
+                    Невероятно производительным и надежным персональным устройством является ноутбук APPLE MacBook Pro 13.3". Эта модель оснащена восьмиядерным процессором Apple M1, который гарантирует эффективное решение повседневных, офисных и мультимедийных задач, а также стабильное функционирование системы при максимальных нагрузках. Мгновенный отклик системы на ваши действия обеспечивают 8 Гб оперативной памяти. 13,3-дюймовый дисплей IPS с тонкими рамками и высоким разрешением обеспечивает широкие углы обзора и яркое, насыщенное изображение. Ноутбук APPLE MacBook Pro 13.3" обладает твердотельным накопителем на 256 Гб. Два разъема Thunderbolt 3 способствуют максимально комфортному и скоростному подключению периферии. Быструю авторизацию гарантирует сканер отпечатка пальца.
+                    """)
                 getProd.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -176,9 +178,8 @@ class RequestFactoryTests: XCTestCase {
             switch response.result {
             case .success(let rev):
                 XCTAssertEqual(rev.result, 1)
-                XCTAssertEqual(rev.reviews.count, 2)
-                XCTAssertEqual(rev.reviews.first?.idUser, 123)
-                XCTAssertEqual(rev.reviews.first?.text, "Текст отзыва")
+                XCTAssertEqual(rev.reviews.count, 3)
+                XCTAssertEqual(rev.reviews.first?.text, "My first epl. The first hour experienced a tactile orgasm from everything that the box provided me. The transition from Windows was not .")
                 gotReviewList.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

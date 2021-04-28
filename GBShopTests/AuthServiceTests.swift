@@ -10,7 +10,7 @@ import XCTest
 class AuthServiceTests: XCTestCase {
     func testLogin() throws {
         let testLogin = expectation(description: "login")
-        let authService = AuthService()
+        let authService = AuthService(requestFactory: RequestFactory())
         authService.login(userName: "Somebody", password: "ivanIvanov@!awdw1") { (result) in
             switch result {
             case .success(let user):
@@ -29,7 +29,7 @@ class AuthServiceTests: XCTestCase {
     }
     func testRegister() throws {
         let testRegister = expectation(description: "Register")
-        let authService = AuthService()
+        let authService = AuthService(requestFactory: RequestFactory())
         authService.register(userName: "Somebody",
                                     password: "ivanIvanov@!awdw1",
                                     email: "some@some.ru",
@@ -49,7 +49,7 @@ class AuthServiceTests: XCTestCase {
     }
     func testChangeData() throws {
         let testChangeData = expectation(description: "ChangeData")
-        let authService = AuthService()
+        let authService = AuthService(requestFactory: RequestFactory())
         authService.changeUserData(idUser: 123,
                                           userName: "Somebody",
                                     password: "ivanIvanov@!awdw1",
