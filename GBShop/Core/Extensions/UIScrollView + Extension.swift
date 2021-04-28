@@ -8,12 +8,15 @@
 import UIKit
 
 extension UIScrollView {
-    convenience init(isScrollEnabled: Bool) {
+    convenience init(isScrollEnabled: Bool,
+                     accessibilityIdentifier: String? = nil) {
         self.init()
         self.isScrollEnabled = isScrollEnabled
         self.showsVerticalScrollIndicator = true
         self.showsHorizontalScrollIndicator = false
         self.isPagingEnabled = false
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.accessibilityIdentifier = accessibilityIdentifier
+    }
 }
-}
+

@@ -19,11 +19,18 @@ class AuthView: UIView {
 
     let signUpLabel = UILabel(text: "Don't have an account yet?", font: .infoTextFont())
 
-    let userNameTextField = UITextField(placeholder: "User name")
-    let passwordTextField = UITextField(placeholder: "Password", isSecure: true)
+    let userNameTextField = UITextField(placeholder: "User name", accessibilityIdentifier: "userNameTextField")
+    let passwordTextField = UITextField(placeholder: "Password", isSecure: true, accessibilityIdentifier: "passwordTextField")
 
-    let loginButton = UIButton(title: "Log in", titleColor: .black, backgroundColor: .lightText, isShadow: true)
-    let signUpButton = UIButton(title: "Sign Up", titleColor: .darkGray, backgroundColor: .clear)
+    let loginButton = UIButton(title: "Log in",
+                               titleColor: .black,
+                               backgroundColor: .lightText,
+                               isShadow: true,
+                               accessibilityIdentifier: "loginButton")
+    let signUpButton = UIButton(title: "Sign Up",
+                                titleColor: .darkGray,
+                                backgroundColor: .clear,
+                                accessibilityIdentifier: "signUpButton")
 
     let logoView = LogoView()
 
@@ -41,11 +48,13 @@ class AuthView: UIView {
 
 // MARK: - Setup constraints
 extension AuthView {
+
     private func animationSetup() {
         animationView.animationSpeed = 1
         animationView.loopMode = .loop
     }
     private func setupUI() {
+        accessibilityIdentifier = "authView"
         let userNameStackView = UIStackView(arrangedSubviews: [userNameImageView,
                                                                userNameTextField],
                                             axis: .horizontal,

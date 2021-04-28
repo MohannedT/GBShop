@@ -8,13 +8,6 @@
 import XCTest
 
 class RegisterViewControllerUITests: XCTestCase {
-    override func setUpWithError() throws {
-        continueAfterFailure = false
-        XCUIApplication().launch()
-    }
-    override func tearDownWithError() throws {
-    }
-
     func testBackToLogin() throws {
         let app = XCUIApplication()
         app.launch()

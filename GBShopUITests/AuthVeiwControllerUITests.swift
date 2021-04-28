@@ -15,9 +15,6 @@ class AuthVeiwControllerUITests: XCTestCase {
 
     }
 
-    override func tearDownWithError() throws {
-    }
-
     func testLogin() throws {
   let app = XCUIApplication()
         app.launch()

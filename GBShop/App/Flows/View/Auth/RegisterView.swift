@@ -27,7 +27,7 @@ class RegisterView: UIView {
     let creditCardTextField = UITextField(placeholder: "Credit card", isSecure: true)
     let bioTextField = UITextField(placeholder: "Hy! I want to buy something")
 
-    let scrollView = UIScrollView(isScrollEnabled: true)
+    let scrollView = UIScrollView(isScrollEnabled: true, accessibilityIdentifier: "scrollView")
 
     private(set) lazy var signUpButton = UIButton(title: "Sign Up",
                                                   titleColor: .black,
@@ -60,6 +60,7 @@ extension RegisterView {
         })
     }
     private func setupUI() {
+        accessibilityIdentifier = "registerView"
         let userNameStackView = UIStackView(arrangedSubviews: [userNameImageView,
                                                                userNameTextField],
                                             axis: .horizontal,
