@@ -61,6 +61,12 @@
 		4A73A4572614E2850058062F /* GetBasketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73A4562614E2850058062F /* GetBasketResult.swift */; };
 		4A73A45C2614E3420058062F /* AuthVeiwControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73A45B2614E3420058062F /* AuthVeiwControllerUITests.swift */; };
 		4A73A4612614E3470058062F /* RegisterViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73A4602614E3470058062F /* RegisterViewControllerUITests.swift */; };
+		4A73A46A2614E7A90058062F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A73A4692614E7A90058062F /* FirebaseAnalytics */; };
+		4A73A46C2614E7A90058062F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 4A73A46B2614E7A90058062F /* FirebaseCrashlytics */; };
+		4A73A4762614E8C90058062F /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73A4752614E8C90058062F /* Analytics.swift */; };
+		4A73A47B2614E9C80058062F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A73A47A2614E9C80058062F /* GoogleService-Info.plist */; };
+		4A73A4842614EBB60058062F /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73A4812614EBB60058062F /* AddReviewViewController.swift */; };
+		4A73A4852614EBB60058062F /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A73A4832614EBB60058062F /* AddReviewView.swift */; };
 		4A75731B2608FBDE00EAD784 /* CatalogCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A75730E2608FBDE00EAD784 /* CatalogCollectionViewController.swift */; };
 		4A75731C2608FBDE00EAD784 /* CatalogCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7573102608FBDE00EAD784 /* CatalogCellModel.swift */; };
 		4A75731D2608FBDE00EAD784 /* CatalogCellModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7573112608FBDE00EAD784 /* CatalogCellModelFactory.swift */; };
@@ -200,6 +206,10 @@
 		4A73A4562614E2850058062F /* GetBasketResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBasketResult.swift; sourceTree = "<group>"; };
 		4A73A45B2614E3420058062F /* AuthVeiwControllerUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthVeiwControllerUITests.swift; sourceTree = "<group>"; };
 		4A73A4602614E3470058062F /* RegisterViewControllerUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewControllerUITests.swift; sourceTree = "<group>"; };
+		4A73A4752614E8C90058062F /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		4A73A47A2614E9C80058062F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A73A4812614EBB60058062F /* AddReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		4A73A4832614EBB60058062F /* AddReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
 		4A75730E2608FBDE00EAD784 /* CatalogCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogCollectionViewController.swift; sourceTree = "<group>"; };
 		4A7573102608FBDE00EAD784 /* CatalogCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogCellModel.swift; sourceTree = "<group>"; };
 		4A7573112608FBDE00EAD784 /* CatalogCellModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogCellModelFactory.swift; sourceTree = "<group>"; };
@@ -277,6 +287,8 @@
 			files = (
 				4A75732C2608FCC900EAD784 /* Kingfisher in Frameworks */,
 				4AC3264625D7DB820023702A /* Alamofire in Frameworks */,
+				4A73A46C2614E7A90058062F /* FirebaseCrashlytics in Frameworks */,
+				4A73A46A2614E7A90058062F /* FirebaseAnalytics in Frameworks */,
 				4A77E158260026370015D791 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +449,7 @@
 		4A6535ED25D2A59A003A7674 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				4A73A47F2614EBB60058062F /* AddReviewViewController */,
 				4A73A43F2614E2000058062F /* Basket */,
 				4A73A4252614DC2B0058062F /* DetailCatalogController */,
 				4A75730C2608FBDE00EAD784 /* CatalogController */,
@@ -450,6 +463,7 @@
 		4A6535EE25D2A59D003A7674 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4A73A4742614E8C90058062F /* Analytics */,
 				4A77E142260025EA0015D791 /* Extensions */,
 				4A77E13A260025E00015D791 /* Helpers */,
 				4AC3264A25D7DF4D0023702A /* Network */,
@@ -470,6 +484,7 @@
 		4A6535F025D2A5B5003A7674 /* Environments */ = {
 			isa = PBXGroup;
 			children = (
+				4A73A47A2614E9C80058062F /* GoogleService-Info.plist */,
 				4A84DA3D25D299A400C57241 /* Info.plist */,
 			);
 			path = Environments;
@@ -565,6 +580,39 @@
 				4A73A4502614E2560058062F /* GetBasketReqestFactory.swift */,
 			);
 			path = GetBasket;
+			sourceTree = "<group>";
+		};
+		4A73A4742614E8C90058062F /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				4A73A4752614E8C90058062F /* Analytics.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		4A73A47F2614EBB60058062F /* AddReviewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A73A4802614EBB60058062F /* Controller */,
+				4A73A4822614EBB60058062F /* View */,
+			);
+			path = AddReviewViewController;
+			sourceTree = "<group>";
+		};
+		4A73A4802614EBB60058062F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A73A4812614EBB60058062F /* AddReviewViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4A73A4822614EBB60058062F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A73A4832614EBB60058062F /* AddReviewView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4A75730C2608FBDE00EAD784 /* CatalogController */ = {
@@ -893,6 +941,7 @@
 				4A84DA2925D299A400C57241 /* Frameworks */,
 				4A84DA2A25D299A400C57241 /* Resources */,
 				4A3CB8E425EE1FAC00FB588A /* ShellScript */,
+				4A73A4702614E7EB0058062F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -903,6 +952,8 @@
 				4AC3264525D7DB820023702A /* Alamofire */,
 				4A77E157260026370015D791 /* Lottie */,
 				4A75732B2608FCC900EAD784 /* Kingfisher */,
+				4A73A4692614E7A90058062F /* FirebaseAnalytics */,
+				4A73A46B2614E7A90058062F /* FirebaseCrashlytics */,
 			);
 			productName = GBShop;
 			productReference = 4A84DA2C25D299A400C57241 /* GBShop.app */;
@@ -979,6 +1030,7 @@
 				4AC3264425D7DB820023702A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4A77E156260026370015D791 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				4A75732A2608FCC900EAD784 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				4A73A4682614E7A90058062F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 4A84DA2D25D299A400C57241 /* Products */;
 			projectDirPath = "";
@@ -998,6 +1050,7 @@
 			files = (
 				4A77E136260025D20015D791 /* loginLottie.json in Resources */,
 				4A8E875526035F8300024CCF /* loadingCat.json in Resources */,
+				4A73A47B2614E9C80058062F /* GoogleService-Info.plist in Resources */,
 				4A84DA3C25D299A400C57241 /* LaunchScreen.storyboard in Resources */,
 				4A84DA3925D299A400C57241 /* Assets.xcassets in Resources */,
 			);
@@ -1036,6 +1089,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+		4A73A4702614E7EB0058062F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1085,6 +1155,7 @@
 				4A5BF26725FAC2E3002E6FA8 /* AddToBasket.swift in Sources */,
 				4A2E56B425ECF6C50055611A /* RemoveReview.swift in Sources */,
 				4AC3265F25D7E34D0023702A /* RequestRouter.swift in Sources */,
+				4A73A4852614EBB60058062F /* AddReviewView.swift in Sources */,
 				4A77E14C260025EA0015D791 /* UIImageView + Extension.swift in Sources */,
 				4A2E56BE25ECF6ED0055611A /* ReviewList.swift in Sources */,
 				4A73A4492614E2000058062F /* BasketTableViewCell.swift in Sources */,
@@ -1092,8 +1163,10 @@
 				4A2E56A025ECF66F0055611A /* AddReview.swift in Sources */,
 				4A75731C2608FBDE00EAD784 /* CatalogCellModel.swift in Sources */,
 				4A73A4362614DC2B0058062F /* AddNewReviewCell.swift in Sources */,
+				4A73A4842614EBB60058062F /* AddReviewViewController.swift in Sources */,
 				4A77E13E260025E00015D791 /* RegisterErrors.swift in Sources */,
 				4A9CAC1D25ECDD0C00E427A8 /* ProductWithDecription.swift in Sources */,
+				4A73A4762614E8C90058062F /* Analytics.swift in Sources */,
 				4A77E122260025510015D791 /* ChangeDataViewController.swift in Sources */,
 				4A9CAC1325ECDC4600E427A8 /* ProductRequestFactory.swift in Sources */,
 				4AC3266925D7E3D10023702A /* User.swift in Sources */,
@@ -1328,6 +1401,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Alexander-Ipatov.GBShop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1347,6 +1421,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Alexander-Ipatov.GBShop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1480,6 +1555,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4A73A4682614E7A90058062F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.9.1;
+			};
+		};
 		4A75732A2608FCC900EAD784 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1507,6 +1590,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4A73A4692614E7A90058062F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A73A4682614E7A90058062F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		4A73A46B2614E7A90058062F /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A73A4682614E7A90058062F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
 		4A75732B2608FCC900EAD784 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4A75732A2608FCC900EAD784 /* XCRemoteSwiftPackageReference "Kingfisher" */;

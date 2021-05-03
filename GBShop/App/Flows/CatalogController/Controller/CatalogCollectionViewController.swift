@@ -9,6 +9,7 @@ import UIKit
 
 class CatalogCollectionViewController: UIViewController {
     var user: User
+    var analytics: FirebaseAnalytics
     var requestFactory: RequestFactory
     private var catalogView: CatalogView {
         view as! CatalogView
@@ -51,7 +52,8 @@ class CatalogCollectionViewController: UIViewController {
     }
 
     // MARK: - Init
-    init(user: User, requestFactory: RequestFactory) {
+    init(user: User, requestFactory: RequestFactory, analytics: FirebaseAnalytics) {
+        self.analytics = analytics
         self.requestFactory = requestFactory
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -73,6 +75,8 @@ class CatalogCollectionViewController: UIViewController {
     self.setupSearchBar()
     self.setupCollectionView()
     self.updatePresentationStyle()
+    self.analytics.viewCatalog()
+
     }
     // MARK: - Methods
 
@@ -86,7 +90,8 @@ class CatalogCollectionViewController: UIViewController {
         let idProduct = products[item.row].idProduct
         navigationController?.pushViewController(DetailProductViewContriller(user: user,
                                                                              requestFactory: requestFactory,
-                                                                             idProduct: idProduct),
+                                                                             idProduct: idProduct,
+                                                                             analytics: analytics),
                                                  animated: true)
     }
     private func getCatalog() {

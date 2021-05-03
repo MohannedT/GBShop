@@ -20,4 +20,3 @@ struct User: Codable, Hashable {
         case bio
     }
 }
-

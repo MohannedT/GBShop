@@ -59,7 +59,7 @@ class AuthService {
               let gender = gender,
               let bio = bio
         else {
-            completion(.failure(AuthError.unknownError))
+            completion(.failure(AuthError.notFilled))
             return
         }
         guard Validators.isFilledRegister(userName: userName,
@@ -163,6 +163,16 @@ class AuthService {
                                           creditCard: creditCard,
                                           bio: bio)
                 completion(.success(changedUser))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    func logOut(idUser: Int, completion: @escaping (Result<LogoutResult, Error>) -> Void) {
+        requestFactory.makeLogoutRequestFactory().logout(idUser: idUser) {(response) in
+            switch response.result {
+            case .success(let result):
+                completion(.success(result))
             case .failure(let error):
                 completion(.failure(error))
             }

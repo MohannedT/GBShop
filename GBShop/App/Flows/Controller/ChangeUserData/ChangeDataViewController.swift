@@ -8,7 +8,7 @@
 import UIKit
 
 class ChangeDataViewController: UIViewController {
-
+    var analytics: FirebaseAnalytics
     private let authService: AuthService
     var user: User
 
@@ -18,12 +18,12 @@ class ChangeDataViewController: UIViewController {
     }
 
     // MARK: - Init
-    init(authService: AuthService, user: User) {
+    init(authService: AuthService, user: User, analytics: FirebaseAnalytics) {
+        self.analytics = analytics
         self.authService = authService
         self.user = user
         super.init(nibName: nil, bundle: nil)
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -33,9 +33,8 @@ class ChangeDataViewController: UIViewController {
         self.view = ChangeDataView()
     }
     override func viewDidLoad() {
-        self.navigationItem.title = "User info"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         super.viewDidLoad()
+        navigationSetUp()
         setupUserData()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShown(notification:)),
@@ -50,6 +49,15 @@ class ChangeDataViewController: UIViewController {
         addButtonTargets()
     }
     // MARK: - Methods
+    private func navigationSetUp() {
+        self.navigationItem.title = "User info"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName:"figure.wave"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(logOutButtonTapped))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+    }
     private func showLoader() {
         changeDataView.animationLoaderView.showLoadingView()
     }
@@ -61,17 +69,32 @@ class ChangeDataViewController: UIViewController {
         changeDataView.genderSegControl.addTarget(self, action: #selector(genderSegTapped), for: .valueChanged)
 
     }
-    private func backToLogIn() {
-        self.dismiss(animated: true, completion: nil)
+    private func goToAuthVC() {
+       self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    private func logOut() {
+        authService.logOut(idUser: user.idUser) { (result) in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self.goToAuthVC()
+                    self.analytics.logout()
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.showAlert(with: "Oops!", and: error.localizedDescription)
+                }
+            }
+        }
     }
     private func tryToSaveInfo() {
         authService.changeUserData(idUser: user.idUser, userName: changeDataView.userNameTextField.text,
-                                   password: changeDataView.passwordTextField.text,
-                                   email: changeDataView.emailTextField.text,
-                                   conconfirmPassword: changeDataView.confirmPasswordTextField.text,
-                                   gender: userGender,
-                                   creditCard: changeDataView.creditCardTextField.text,
-                                   bio:  changeDataView.bioTextField.text) { (result) in
+                      password: changeDataView.passwordTextField.text,
+                      email: changeDataView.emailTextField.text,
+                      conconfirmPassword: changeDataView.confirmPasswordTextField.text,
+                      gender: userGender,
+                      creditCard: changeDataView.creditCardTextField.text,
+                      bio:  changeDataView.bioTextField.text) { (result) in
             switch result {
             case .success:
                 // MARK: Разобраться с потоками
@@ -83,29 +106,29 @@ class ChangeDataViewController: UIViewController {
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.hideLoader()
-                    self.showAlert(with: "Oops!",
-                                   and: error.localizedDescription)
-                }
+                self.showAlert(with: "Oops!",
+                               and: error.localizedDescription)
+            }
             }
         }
     }
 
     // MARK: - keyboard methods
-    @objc func keyboardWillShown(notification: Notification) {
-        let info = notification.userInfo! as NSDictionary
-        let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0)
-        changeDataView.scrollView.contentInset = contentInsets
-        changeDataView.scrollView.scrollIndicatorInsets = contentInsets
+        @objc func keyboardWillShown(notification: Notification) {
+              let info = notification.userInfo! as NSDictionary
+              let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
+              let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0)
+            changeDataView.scrollView.contentInset = contentInsets
+            changeDataView.scrollView.scrollIndicatorInsets = contentInsets
+          }
+        @objc func hideKeyboard() {
+            changeDataView.endEditing(true)
+         }
+        @objc func keyboardWillHide(notification: Notification) {
+            changeDataView.scrollView.contentInset = UIEdgeInsets.zero
+            changeDataView.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+        }
     }
-    @objc func hideKeyboard() {
-        changeDataView.endEditing(true)
-    }
-    @objc func keyboardWillHide(notification: Notification) {
-        changeDataView.scrollView.contentInset = UIEdgeInsets.zero
-        changeDataView.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
-    }
-}
 // MARK: - Actions
 extension ChangeDataViewController {
     @objc private func saveButtonTapped() {
@@ -120,7 +143,11 @@ extension ChangeDataViewController {
             break
         }
     }
-}
+    @objc private func logOutButtonTapped() {
+           logOut()
+            }
+        }
+
 // MARK: - SetupTextFieldsData
 extension ChangeDataViewController {
     private func setupUserData() {
