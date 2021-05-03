@@ -20,4 +20,13 @@ extension UIFont {
     static func priceFont() -> UIFont? {
         return UIFont.init(name: "Thonburi", size: 18)
     }
+    static func productInfoPriceFont() -> UIFont? {
+        return UIFont.init(name: "Thonburi-Bold", size: 25)
+    }
+    static func productInfoNameFont() -> UIFont? {
+        return UIFont.init(name: "Thonburi", size: 20)
+    }
+    static func productInfoDescriptionFont() -> UIFont? {
+        return UIFont.init(name: "Thonburi", size: 15)
+    }
 }

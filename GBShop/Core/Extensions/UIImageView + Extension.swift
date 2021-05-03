@@ -8,10 +8,11 @@
 import UIKit
 
 extension UIImageView {
-    convenience init(systemImageName: String) {
+    convenience init(systemImageName: String, tintColor: UIColor = .black) {
         self.init()
         self.image = UIImage(systemName: systemImageName)
         self.image?.withRenderingMode(.alwaysTemplate)
-        self.tintColor = .black
+        self.tintColor = tintColor
+        self.translatesAutoresizingMaskIntoConstraints = false
 }
 }

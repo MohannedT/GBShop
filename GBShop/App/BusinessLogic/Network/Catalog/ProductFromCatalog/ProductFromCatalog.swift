@@ -27,7 +27,7 @@ class ProductFromCatalog: AbstractRequestFactory {
 }
 
 extension ProductFromCatalog: ProductRequestFactory {
-    func getProduct(idProduct: Int, completionHandler: @escaping (AFDataResponse<ProductWithDecription>) -> Void) {
+    func getProduct(idProduct: Int, completionHandler: @escaping (AFDataResponse<ProductWithDescription>) -> Void) {
         let requestModel = ProductCatalog(baseUrl: baseUrl, idProduct: idProduct)
         self.request(request: requestModel, completionHandler: completionHandler)
     }

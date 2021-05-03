@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct Review: Codable {
-    let idUser: Int
+struct Review: Codable, Hashable {
+    let username: String
     let text: String
+    let productMark: Int
 
     enum CodingKeys: String, CodingKey {
-        case idUser = "id_user"
+        case username
         case text
+        case productMark = "mark"
     }
 }
